@@ -19,6 +19,7 @@ class Cache extends BaseController
         $data['totalSize']    = $totalSize;
         $data['expiredCount'] = $expiredCount;
         $data['activeCount']  = $activeCount;
+        $data['js']           = ['admin/cache'];
         $data['title']        = 'Cache';
 
         return view('admin/cache/index', $data);

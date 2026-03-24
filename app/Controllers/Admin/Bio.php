@@ -15,6 +15,7 @@ class Bio extends BaseController
 
         $data['bios']   = $model->getAll();
         $data['active'] = $model->getActive();
+        $data['js']     = ['admin/bio'];
         $data['title']  = 'Bio';
 
         return view('admin/bio/index', $data);
