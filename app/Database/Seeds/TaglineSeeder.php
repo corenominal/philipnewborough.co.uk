@@ -10,6 +10,7 @@ class TaglineSeeder extends Seeder
     {
         $taglines = [
             'Web Developer',
+            'Grumpa',
             'PHP Enthusiast',
             'Tech Explorer',
             '40K Lore Keeper',
