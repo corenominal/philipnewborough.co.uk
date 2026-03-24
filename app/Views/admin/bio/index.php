@@ -30,8 +30,8 @@
 
         <!-- New bio form -->
         <div class="col-12 col-lg-5">
-            <div class="card bg-dark border-secondary h-100">
-                <div class="card-header border-secondary">
+            <div class="card bg-dark h-100">
+                <div class="card-header">
                     <h5 class="mb-0">Write New Bio</h5>
                 </div>
                 <div class="card-body">
@@ -60,8 +60,8 @@
 
         <!-- Bio history -->
         <div class="col-12 col-lg-7">
-            <div class="card bg-dark border-secondary h-100">
-                <div class="card-header border-secondary">
+            <div class="card bg-dark h-100">
+                <div class="card-header">
                     <h5 class="mb-0">Bio History</h5>
                 </div>
                 <div class="card-body p-0">
