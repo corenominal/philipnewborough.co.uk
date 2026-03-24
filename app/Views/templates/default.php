@@ -62,6 +62,9 @@
                         <li class="nav-item topnav-item">
                             <a class="nav-link text-white-50 py-3 py-lg-0 px-3" href="<?= config('Urls')->tld ?>"><i class="bi bi-house-fill me-1"></i> Homepage</a>
                         </li>
+                        <li class="nav-item topnav-item">
+                            <a class="nav-link text-white-50 py-3 py-lg-0 px-3" href="/contact"><i class="bi bi-envelope-fill me-1"></i> Contact</a>
+                        </li>
                         <?php // is_admin session is set and true
                         if( session()->get('is_admin') ):
                         ?>

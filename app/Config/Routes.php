@@ -47,6 +47,10 @@ $routes->cli('cli/fetch-github-activity', 'CLI\FetchGitHubActivity::index');
 // Metrics route
 $routes->post('/metrics/receive', 'Metrics::receive');
 
+// Contact routes
+$routes->get('/contact', 'Contact::index');
+$routes->post('/contact/send', 'Contact::send');
+
 // Logout route
 $routes->get('/logout', 'Auth::logout');
 

@@ -27,6 +27,8 @@ class Filters extends BaseFilters
      */
     private const AUTH_EXCEPTIONS = [
         '/',
+        'contact',
+        'contact/send',
         'metrics/receive',
         'cli/*',
         'api/*',
