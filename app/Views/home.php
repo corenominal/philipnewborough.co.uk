@@ -268,30 +268,34 @@
             <div class="d-flex flex-column gap-2">
                 <?php foreach (array_slice($bookmarks, 0, 8) as $bookmark): ?>
                 <a href="<?= esc($bookmark['url']) ?>"
-                   class="bookmark-item card-animate d-flex align-items-center gap-3 text-decoration-none p-3 rounded border border-secondary border-opacity-25"
+                   class="bookmark-item card-animate d-flex flex-column gap-2 text-decoration-none p-3 rounded border border-secondary border-opacity-25"
                    target="_blank"
                    rel="noopener noreferrer">
-                    <div class="bookmark-item__icon flex-shrink-0">
-                        <?php if (! empty($bookmark['favicon'])): ?>
-                        <img src="<?= esc($bookmark['favicon']) ?>"
-                             alt=""
-                             width="16" height="16"
-                             loading="lazy"
-                             onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
-                        <i class="bi bi-link-45deg text-secondary" style="display:none;"></i>
-                        <?php else: ?>
-                        <i class="bi bi-link-45deg text-secondary"></i>
-                        <?php endif; ?>
-                    </div>
-                    <div class="flex-grow-1 min-w-0">
-                        <div class="bookmark-item__title small fw-medium text-truncate text-body"><?= esc($bookmark['title']) ?></div>
-                        <div class="text-muted" style="font-size: 0.7rem;"><?= esc($bookmark['domain']) ?></div>
+                    <div class="d-flex align-items-center gap-3 overflow-hidden">
+                        <div class="bookmark-item__icon flex-shrink-0">
+                            <?php if (! empty($bookmark['favicon'])): ?>
+                            <img src="<?= esc($bookmark['favicon']) ?>"
+                                 alt=""
+                                 width="16" height="16"
+                                 loading="lazy"
+                                 onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
+                            <i class="bi bi-link-45deg text-secondary" style="display:none;"></i>
+                            <?php else: ?>
+                            <i class="bi bi-link-45deg text-secondary"></i>
+                            <?php endif; ?>
+                        </div>
+                        <div class="flex-grow-1 min-w-0">
+                            <div class="bookmark-item__title small fw-medium text-truncate text-body"><?= esc($bookmark['title']) ?></div>
+                            <div class="text-muted" style="font-size: 0.7rem;"><?= esc($bookmark['domain']) ?></div>
+                        </div>
                     </div>
                     <?php if (! empty($bookmark['tags'])): ?>
-                    <?php $firstTag = trim(explode(',', $bookmark['tags'])[0]); ?>
-                    <?php if ($firstTag): ?>
-                    <span class="badge bg-secondary bg-opacity-25 text-secondary border border-secondary border-opacity-25 text-nowrap fw-normal d-none d-sm-block"><?= esc($firstTag) ?></span>
-                    <?php endif; ?>
+                    <div class="d-flex flex-wrap gap-1">
+                        <?php foreach (array_slice(explode(',', $bookmark['tags']), 0, 3) as $tag): ?>
+                        <?php $tag = trim($tag); if ($tag): ?>
+                        <span class="badge bg-secondary bg-opacity-25 text-secondary border border-secondary border-opacity-25 text-nowrap fw-normal"><?= esc($tag) ?></span>
+                        <?php endif; endforeach; ?>
+                    </div>
                     <?php endif; ?>
                 </a>
                 <?php endforeach; ?>
