@@ -35,7 +35,7 @@ class Home extends BaseController
         $data = $this->apiGet($baseUrl . '/api/posts/latest', [
             'ApiKey: ' . config('ApiKeys')->masterKey,
             'Accept: application/json',
-        ]);
+        ], 'blog');
 
         if (! isset($data['data']) || ! is_array($data['data'])) {
             return [];
@@ -65,7 +65,7 @@ class Home extends BaseController
         $data = $this->apiGet($baseUrl . '/api/statuses/latest', [
             'ApiKey: ' . config('ApiKeys')->masterKey,
             'Accept: application/json',
-        ]);
+        ], 'status');
 
         if (! isset($data['data']) || ! is_array($data['data'])) {
             return [];
@@ -89,7 +89,7 @@ class Home extends BaseController
         $data = $this->apiGet($baseUrl . '/api/bookmarks/latest', [
             'ApiKey: ' . config('ApiKeys')->masterKey,
             'Accept: application/json',
-        ]);
+        ], 'bookmarks');
 
         if (! isset($data['items']) || ! is_array($data['items'])) {
             return [];
@@ -151,11 +151,11 @@ class Home extends BaseController
         }
     }
 
-    private function apiGet(string $url, array $headers = []): ?array
+    private function apiGet(string $url, array $headers = [], string $label = 'apiget'): ?array
     {
-        // Cache key derived from URL + headers so different requests don't collide
+        // Cache key derived from label + URL + headers so different requests don't collide
         $cache = \Config\Services::cache();
-        $cacheKey = 'apiget_' . md5($url . '|' . json_encode($headers));
+        $cacheKey = 'apiget_' . $label . '_' . md5($url . '|' . json_encode($headers));
 
         // Return cached response when available
         $cached = $cache->get($cacheKey);
