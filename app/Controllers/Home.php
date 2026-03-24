@@ -152,7 +152,34 @@ class Home extends BaseController
 
             switch ($type) {
                 case 'PushEvent':
-                    $count       = count($event['payload']['commits'] ?? []);
+                    $commits     = $event['payload']['commits'] ?? null;
+                    $count       = isset($event['payload']['size'])
+                        ? (int) $event['payload']['size']
+                        : (is_array($commits) ? count($commits) : 0);
+
+                    // If the payload doesn't include commits or size, try the compare API
+                    if ($count === 0 && isset($event['payload']['before'], $event['payload']['head']) && is_string($repo) && $repo !== '') {
+                        $before = $event['payload']['before'];
+                        $head   = $event['payload']['head'];
+
+                        $headers = [
+                            'User-Agent: ' . (config('App')->siteName ?: 'PhilipNewborough'),
+                            'Accept: application/vnd.github.v3+json',
+                        ];
+
+                        $token = (string) config('GitHub')->token;
+                        if (! empty($token)) {
+                            $headers[] = 'Authorization: token ' . $token;
+                        }
+
+                        $compareUrl = 'https://api.github.com/repos/' . $repo . '/compare/' . rawurlencode($before) . '...' . rawurlencode($head);
+                        $compare    = $this->apiGet($compareUrl, $headers);
+
+                        if (is_array($compare) && isset($compare['total_commits'])) {
+                            $count = (int) $compare['total_commits'];
+                        }
+                    }
+
                     $branch      = ltrim(str_replace('refs/heads/', '', $event['payload']['ref'] ?? 'main'), '/');
                     $icon        = 'bi-git';
                     $label       = 'push';
