@@ -92,17 +92,6 @@
 .tagline-text {
     display: inline-block;
     min-width: 14ch;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.tagline-text.tagline--exiting {
-    opacity: 0;
-    transform: translateY(-10px);
-}
-
-.tagline-text.tagline--entering {
-    opacity: 0;
-    transform: translateY(10px);
 }
 
 .tagline-cursor {
