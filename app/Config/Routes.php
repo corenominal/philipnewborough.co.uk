@@ -23,6 +23,11 @@ $routes->post('/admin/taglines/move-up/(:num)', 'Admin\Taglines::moveUp/$1');
 $routes->post('/admin/taglines/move-down/(:num)', 'Admin\Taglines::moveDown/$1');
 $routes->post('/admin/taglines/toggle/(:num)', 'Admin\Taglines::toggle/$1');
 
+// Admin bio routes
+$routes->get('/admin/bio', 'Admin\Bio::index');
+$routes->post('/admin/bio/store', 'Admin\Bio::store');
+$routes->post('/admin/bio/activate/(:num)', 'Admin\Bio::activate/$1');
+
 // API routes
 $routes->match(['get', 'options'], '/api/test/ping', 'Api\Test::ping');
 

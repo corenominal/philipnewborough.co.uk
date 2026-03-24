@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use DateTime;
+use App\Models\BioModel;
 use App\Models\TaglineModel;
 
 class Home extends BaseController
@@ -13,6 +14,7 @@ class Home extends BaseController
         $data['css']           = ['home'];
         $data['title']         = 'Home';
         $data['taglines']      = (new TaglineModel())->getActive();
+        $data['bio']           = (new BioModel())->getActive()['bio'] ?? '';
         $data['github_events'] = $this->fetchGitHubActivity();
         $data['blog_posts']    = $this->fetchBlogPosts();
         $data['statuses']      = $this->fetchStatuses();

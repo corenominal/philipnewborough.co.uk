@@ -30,9 +30,11 @@
                     <span id="hero-tagline" class="tagline-text ms-1"
                           data-taglines="<?= esc(json_encode(array_column($taglines ?? [], 'tagline'))) ?>">Web Developer</span><span class="tagline-cursor">▍</span>
                 </p>
+                <?php if ($bio): ?>
                 <p class="home-hero__bio lead text-secondary mb-4">
-                    Web developer and tech enthusiast. When I'm not sat in front of my computer, I can be found reading Warhammer 40,000 fiction or riding my bike.
+                    <?= esc($bio) ?>
                 </p>
+                <?php endif; ?>
                 <div class="home-hero__links d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start">
                     
                     <?php if ($blogUrl): ?>
