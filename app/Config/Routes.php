@@ -28,6 +28,11 @@ $routes->get('/admin/bio', 'Admin\Bio::index');
 $routes->post('/admin/bio/store', 'Admin\Bio::store');
 $routes->post('/admin/bio/activate/(:num)', 'Admin\Bio::activate/$1');
 
+// Admin cache routes
+$routes->get('/admin/cache', 'Admin\Cache::index');
+$routes->post('/admin/cache/clear', 'Admin\Cache::clear');
+$routes->post('/admin/cache/delete', 'Admin\Cache::delete');
+
 // API routes
 $routes->match(['get', 'options'], '/api/test/ping', 'Api\Test::ping');
 

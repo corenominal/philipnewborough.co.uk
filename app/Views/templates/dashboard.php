@@ -134,6 +134,11 @@
                                     <i class="bi bi-person-lines-fill"></i> Bio
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2 text-white-50 px-3 py-2" href="/admin/cache">
+                                    <i class="bi bi-database"></i> Cache
+                                </a>
+                            </li>
                         </ul>
                         <?php endif; ?>
 
