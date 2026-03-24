@@ -39,6 +39,7 @@ $routes->match(['get', 'options'], '/api/test/ping', 'Api\Test::ping');
 // Command line routes
 $routes->cli('cli/test/index/(:segment)', 'CLI\Test::index/$1');
 $routes->cli('cli/test/count', 'CLI\Test::count');
+$routes->cli('cli/fetch-github-activity', 'CLI\FetchGitHubActivity::index');
 
 // Metrics route
 $routes->post('/metrics/receive', 'Metrics::receive');
