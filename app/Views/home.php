@@ -104,7 +104,7 @@
                 <span class="terminal-row__time font-monospace text-muted d-none d-sm-block"><?= esc($event['time_ago']) ?></span>
                 <span class="badge bg-<?= esc($event['label_class']) ?>-subtle text-<?= esc($event['label_class']) ?>-emphasis border border-<?= esc($event['label_class']) ?>-subtle font-monospace text-nowrap"
                       style="font-size: 0.65rem; min-width: 5.5rem; text-align: center;"><?= esc($event['label']) ?></span>
-                <i class="bi <?= esc($event['icon']) ?> text-<?= esc($event['label_class']) ?>-emphasis flex-shrink-0"></i>
+                <i class="bi <?= esc($event['icon']) ?> text-secondary flex-shrink-0"></i>
                 <span class="terminal-row__desc text-body-secondary flex-grow-1 small text-truncate"><?= $event['description'] ?></span>
                 <i class="bi bi-arrow-up-right text-muted flex-shrink-0 ms-auto d-none d-md-block" style="font-size: 0.7rem;"></i>
             </a>
