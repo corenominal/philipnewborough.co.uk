@@ -2,18 +2,12 @@
 
 // -- Tagline rotator ---------------------------------------------------------
 
-const taglines = [
-  'Web Developer',
-  'PHP Enthusiast',
-  'Tech Explorer',
-  '40K Lore Keeper',
-  'Warhammer Fan',
-  'Cyclist',
-  'Open Source Fan',
-];
+const taglineEl = document.getElementById('hero-tagline');
+const taglines = taglineEl
+  ? JSON.parse(taglineEl.dataset.taglines || '[]')
+  : [];
 
 let taglineIndex = 0;
-const taglineEl = document.getElementById('hero-tagline');
 
 function rotateTagline() {
   if (!taglineEl) return;
@@ -34,7 +28,7 @@ function rotateTagline() {
   }, 260);
 }
 
-if (taglineEl) {
+if (taglineEl && taglines.length > 1) {
   setInterval(rotateTagline, 3200);
 }
 

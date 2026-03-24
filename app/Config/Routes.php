@@ -12,6 +12,17 @@ $routes->get('/admin', 'Admin\Home::index');
 $routes->get('/admin/datatable', 'Admin\Home::datatable');
 $routes->post('/admin/delete', 'Admin\Home::delete');
 
+// Admin taglines routes
+$routes->get('/admin/taglines', 'Admin\Taglines::index');
+$routes->get('/admin/taglines/create', 'Admin\Taglines::create');
+$routes->post('/admin/taglines/store', 'Admin\Taglines::store');
+$routes->get('/admin/taglines/edit/(:num)', 'Admin\Taglines::edit/$1');
+$routes->post('/admin/taglines/update/(:num)', 'Admin\Taglines::update/$1');
+$routes->post('/admin/taglines/delete', 'Admin\Taglines::delete');
+$routes->post('/admin/taglines/move-up/(:num)', 'Admin\Taglines::moveUp/$1');
+$routes->post('/admin/taglines/move-down/(:num)', 'Admin\Taglines::moveDown/$1');
+$routes->post('/admin/taglines/toggle/(:num)', 'Admin\Taglines::toggle/$1');
+
 // API routes
 $routes->match(['get', 'options'], '/api/test/ping', 'Api\Test::ping');
 

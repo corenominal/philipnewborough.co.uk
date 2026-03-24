@@ -27,7 +27,8 @@
                 </h1>
                 <p class="home-hero__tagline fs-4 mb-4">
                     <span class="text-primary opacity-75">&gt;</span>
-                    <span id="hero-tagline" class="tagline-text ms-1">Web Developer</span><span class="tagline-cursor">▍</span>
+                    <span id="hero-tagline" class="tagline-text ms-1"
+                          data-taglines="<?= esc(json_encode(array_column($taglines ?? [], 'tagline'))) ?>">Web Developer</span><span class="tagline-cursor">▍</span>
                 </p>
                 <p class="home-hero__bio lead text-secondary mb-4">
                     Web developer and tech enthusiast. When I'm not sat in front of my computer, I can be found reading Warhammer 40,000 fiction or riding my bike.
