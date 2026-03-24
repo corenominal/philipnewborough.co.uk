@@ -57,6 +57,14 @@ class Contact extends BaseController
                 ->with('errors', $this->validator->getErrors());
         }
 
+        // Test for messages containing a single word (common in spam)
+        $message = $this->request->getPost('message');
+        if (str_word_count($message) === 1) {
+            return redirect()->to('/contact')
+                ->withInput()
+                ->with('error', 'Please provide a more detailed message.');
+        }
+
         $name    = $this->request->getPost('name');
         $email   = $this->request->getPost('email');
         $message = $this->request->getPost('message');
