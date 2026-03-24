@@ -61,11 +61,17 @@
 }
 
 .home-hero__name {
-    background: linear-gradient(140deg, #ffffff 30%, rgba(var(--bs-primary-rgb), 0.85) 100%);
+    background: linear-gradient(140deg, #ffffff 0%, rgba(var(--bs-primary-rgb), 0.85) 50%, #ffffff 100%);
+    background-size: 200% 200%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: fade-in-up 0.7s 0.1s ease both;
+    animation: fade-in-up 0.7s 0.1s ease both, gradient-shift 6s 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes gradient-shift {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
 }
 
 .home-hero__tagline {
