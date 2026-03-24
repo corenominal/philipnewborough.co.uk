@@ -9,8 +9,6 @@ $routes->get('/', 'Home::index');
 
 // Admin routes
 $routes->get('/admin', 'Admin\Home::index');
-$routes->get('/admin/datatable', 'Admin\Home::datatable');
-$routes->post('/admin/delete', 'Admin\Home::delete');
 
 // Admin taglines routes
 $routes->get('/admin/taglines', 'Admin\Taglines::index');
