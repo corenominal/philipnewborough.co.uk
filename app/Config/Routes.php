@@ -33,6 +33,11 @@ $routes->get('/admin/cache', 'Admin\Cache::index');
 $routes->post('/admin/cache/clear', 'Admin\Cache::clear');
 $routes->post('/admin/cache/delete', 'Admin\Cache::delete');
 
+// Admin GitHub activity routes
+$routes->get('/admin/github-activity', 'Admin\GitHubActivity::index');
+$routes->get('/admin/github-activity/datatable', 'Admin\GitHubActivity::datatable');
+$routes->post('/admin/github-activity/delete', 'Admin\GitHubActivity::delete');
+
 // API routes
 $routes->match(['get', 'options'], '/api/test/ping', 'Api\Test::ping');
 

@@ -139,6 +139,11 @@
                                     <i class="bi bi-database"></i> Cache
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2 text-white-50 px-3 py-2" href="/admin/github-activity">
+                                    <i class="bi bi-activity"></i> GitHub Activity
+                                </a>
+                            </li>
                         </ul>
                         <?php endif; ?>
 
