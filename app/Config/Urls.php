@@ -1,0 +1,26 @@
+<?php
+
+namespace Config;
+
+use CodeIgniter\Config\BaseConfig;
+
+class Urls extends BaseConfig
+{
+    public $tld = '';
+    public $status = '';
+    public $blog = '';
+    public $bookmarks = '';
+    public $startpage = '';
+    public $appmenu = '';
+    public $auth = '';
+    public $assets = '';
+    public $sendmail = '';
+    public $notifications = '';
+    public $metrics = '';
+    public $logs = '';
+    public $markdown = '';
+    public $license = '';
+    public $github = '';
+    public $tldcookiedomain = '';
+    public $cookiedomain = '';
+}

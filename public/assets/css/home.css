@@ -1,0 +1,398 @@
+/* ============================================================
+   HOME PAGE STYLES
+   ============================================================ */
+
+/* ---- Hero ---- */
+
+.home-hero {
+    position: relative;
+    overflow: hidden;
+    background: #0d1117;
+    background: rgb(32 35 44);
+    border-bottom: 1px solid var(--bs-border-color);
+}
+
+.home-hero::before {
+    /* Grid removed in favour of canvas network effect */
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: none;
+    pointer-events: none;
+}
+
+.home-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 55% at 50% -10%, rgba(190, 176, 49, 0.14) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 100% 110%, rgba(193, 176, 66, 0.1) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+@keyframes hero-grid-drift {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(60px, 60px); }
+}
+
+.home-hero__content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Network canvas container */
+.home-hero__network {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.home-hero__network canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.home-hero__greeting {
+    animation: fade-in-down 0.6s ease both;
+}
+
+.home-hero__name {
+    background: linear-gradient(140deg, #ffffff 30%, rgba(var(--bs-primary-rgb), 0.85) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fade-in-up 0.7s 0.1s ease both;
+}
+
+.home-hero__tagline {
+    animation: fade-in-up 0.7s 0.2s ease both;
+}
+
+.home-hero__bio {
+    animation: fade-in-up 0.7s 0.3s ease both;
+    max-width: 560px;
+}
+
+.home-hero__links {
+    animation: fade-in-up 0.7s 0.4s ease both;
+}
+
+/* Tagline cycling */
+
+.tagline-text {
+    display: inline-block;
+    min-width: 14ch;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.tagline-text.tagline--exiting {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.tagline-text.tagline--entering {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.tagline-cursor {
+    display: inline-block;
+    color: var(--bs-primary);
+    animation: cursor-blink 1s step-end infinite;
+    margin-left: 1px;
+    vertical-align: baseline;
+}
+
+@keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+/* Avatar */
+
+.home-hero__avatar {
+    position: relative;
+    animation: fade-in-scale 0.8s 0.3s ease both;
+}
+
+.home-hero__avatar-img {
+    width: 190px;
+    height: 190px;
+    object-fit: cover;
+    border: 3px solid rgba(var(--bs-primary-rgb), 0.45);
+    box-shadow:
+        0 0 0 8px rgba(var(--bs-primary-rgb), 0.07),
+        0 8px 40px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.home-hero__avatar-img:hover {
+    border-color: rgba(var(--bs-primary-rgb), 0.7);
+    box-shadow:
+        0 0 0 8px rgba(var(--bs-primary-rgb), 0.12),
+        0 8px 48px rgba(var(--bs-primary-rgb), 0.25);
+}
+
+.home-hero__avatar-icon {
+    font-size: 9rem;
+    color: rgba(255, 255, 255, 0.08);
+}
+
+/* ---- Section labels ---- */
+
+.home-section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bs-secondary-color);
+    margin-bottom: 0.85rem;
+}
+
+/* ---- Terminal ---- */
+
+.terminal-window {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #20232c;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.45);
+}
+
+.terminal-header {
+    background: #21262d;
+    padding: 8px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    display: flex;
+    align-items: center;
+}
+
+.terminal-dot {
+    flex-shrink: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.terminal-dot--close    { background: #ff5f57; }
+.terminal-dot--minimize { background: #febc2e; margin-left: 6px; }
+.terminal-dot--maximize { background: #28c840; margin-left: 6px; }
+
+.terminal-body {
+    padding: 4px 0;
+}
+
+.terminal-row {
+    padding: 9px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    color: inherit;
+    transition: background-color 0.15s ease;
+}
+
+.terminal-row:last-child {
+    border-bottom: none;
+}
+
+.terminal-row:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+.terminal-row__time {
+    min-width: 5rem;
+    text-align: right;
+    font-size: 0.72rem;
+}
+
+/* ---- Blog cards ---- */
+
+.blog-card {
+    background: rgba(255, 255, 255, 0.02);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 36px rgba(0, 0, 0, 0.35);
+}
+
+.blog-card__img {
+    display: block;
+    width: 100%;
+    height:auto;
+}
+
+.blog-card__img-placeholder {
+    height: 160px;
+    background: rgba(255, 255, 255, 0.025);
+    font-size: 2.5rem;
+    color: rgba(255, 255, 255, 0.1);
+}
+
+/* ---- Status cards ---- */
+
+.status-card {
+    background: rgba(255, 255, 255, 0.02);
+    transition: border-color 0.2s ease;
+}
+
+.status-card:hover {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.status-card__avatar {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(13, 110, 253, 0.12);
+    border: 1px solid rgba(13, 110, 253, 0.25);
+    color: var(--bs-primary);
+    font-size: 1.1rem;
+    overflow: hidden;
+}
+
+.status-card__content p:last-child {
+    margin-bottom: 0;
+}
+
+.status-card__media-img {
+    max-height: 220px;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.status-card__media-video {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    max-height: 340px;
+    display: block;
+    object-fit: cover;
+    border-radius: 6px;
+    background: #000;
+}
+
+/* ---- Bookmarks ---- */
+
+.bookmark-item {
+    background: rgba(255, 255, 255, 0.02);
+    transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.bookmark-item:hover {
+    background-color: rgba(255, 255, 255, 0.055);
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    transform: translateX(4px);
+}
+
+.bookmark-item__icon {
+    width: 20px;
+    text-align: center;
+}
+
+/* Truncate bookmark titles so long titles don't break layout */
+.bookmark-item__title {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Ensure flex items can shrink and title respects available space */
+.bookmark-item,
+.bookmark-item > .flex-grow-1 {
+    min-width: 0;
+}
+.bookmark-item__title {
+    max-width: 100%;
+}
+
+/* ---- Scroll Animations ---- */
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card-animate {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.is-visible .card-animate:nth-child(1) { transition-delay: 0.05s; }
+.is-visible .card-animate:nth-child(2) { transition-delay: 0.12s; }
+.is-visible .card-animate:nth-child(3) { transition-delay: 0.19s; }
+.is-visible .card-animate:nth-child(4) { transition-delay: 0.26s; }
+.is-visible .card-animate:nth-child(5) { transition-delay: 0.33s; }
+.is-visible .card-animate:nth-child(6) { transition-delay: 0.40s; }
+.is-visible .card-animate:nth-child(7) { transition-delay: 0.47s; }
+.is-visible .card-animate:nth-child(8) { transition-delay: 0.54s; }
+
+.is-visible .card-animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Blog card hover overrides (the card-animate is on the col wrapper) */
+.is-visible .card-animate .blog-card {
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+/* ---- Hero Entry Keyframes ---- */
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in-down {
+    from {
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in-scale {
+    from {
+        opacity: 0;
+        transform: scale(0.88);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 991.98px) {
+    .home-hero__bio {
+        max-width: 100%;
+    }
+}
