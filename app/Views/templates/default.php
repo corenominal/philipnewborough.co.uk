@@ -38,6 +38,13 @@
         <?php if(isset($js)): foreach ($js as $file): $jsPath = FCPATH . 'assets/js/' . $file . '.js'; ?>
         <script defer src="/assets/js/<?= $file ?>.js<?= file_exists($jsPath) ? '?v=' . filemtime($jsPath) : '' ?>"></script>
         <?php endforeach; endif; ?>
+        <!-- Verification meta tags -->
+        <?php if (!empty(config('Verifications')->mastodon)): ?>
+        <meta rel="me" name="mastodon" content="<?= esc(config('Verifications')->mastodon) ?>">
+        <?php endif; ?>
+        <?php if (!empty(config('Verifications')->github)): ?>
+        <meta rel="me" name="github" content="<?= esc(config('Verifications')->github) ?>">
+        <?php endif; ?>
     </head>
     <body class="d-flex flex-column vh-100">
         <!-- Skip link -->
