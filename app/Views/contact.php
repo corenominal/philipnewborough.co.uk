@@ -134,7 +134,7 @@
                             <h2 class="h5 mb-0 fw-bold">Discord</h2>
                         </div>
                         <p class="text-secondary small mb-3">
-                            Prefer a more informal chat? Join my Discord server and say hi!
+                            Prefer a more informal chat? Join my personal Discord server and say hi! Everyone's welcome, whether you have a question, want to collaborate, or just want to chat about tech, gaming, or anything else.
                         </p>
                         <a href="<?= esc($discord_url) ?>"
                            class="btn btn-outline-primary w-100"
