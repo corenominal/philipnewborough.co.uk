@@ -86,7 +86,7 @@
 <?php if (! empty($github_events)): ?>
 <section class="container px-4 my-5 animate-on-scroll">
     <div class="home-section-label">
-        <i class="bi bi-github me-1"></i> Recent Activity
+        <i class="bi bi-github me-1"></i> Recent Public Activity
     </div>
     <div class="terminal-window">
         <div class="terminal-header">
