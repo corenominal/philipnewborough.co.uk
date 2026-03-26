@@ -12,9 +12,14 @@ Options -Indexes
 	RewriteEngine On
 
 	# Redirect old blog posts to new blog subdomain
+	RewriteRule ^blog$ https://blog.philipnewborough.co.uk [R=301,L]
 	RewriteRule ^blog/(.+)$ https://blog.philipnewborough.co.uk/posts/$1 [R=301,L]
 
+	# Redirect status page to status subdomain
+	RewriteRule ^status$ https://status.philipnewborough.co.uk [R=301,L]
+
 	# Redirect old bookmarks to new bookmarks subdomain
+	RewriteRule ^bookmarks$ https://bookmarks.philipnewborough.co.uk [R=301,L]
 	RewriteRule ^bookmarks/(.+)$ https://bookmarks.philipnewborough.co.uk/bookmark/$1 [R=301,L]
 
 	# If you installed CodeIgniter in a subfolder, you will need to
