@@ -81,6 +81,40 @@
 <script defer src="/assets/js/home-hero-network.js"></script>
 
 <!-- ============================================================
+     EMOJI SLOTS RPG
+     ============================================================ -->
+<section class="container px-4 my-5 animate-on-scroll">
+    <div class="home-section-label">
+        <i class="bi bi-joystick me-1"></i> Project Spotlight
+    </div>
+    <div class="emoji-slots-card row g-0 align-items-stretch rounded overflow-hidden border border-secondary border-opacity-25">
+        <div class="col-lg-6 emoji-slots-card__video-col">
+            <video
+                class="emoji-slots-card__video"
+                src="/assets/video/emojislotsrpg.mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                aria-label="Emoji Slots RPG gameplay preview">
+            </video>
+        </div>
+        <div class="col-lg-6 emoji-slots-card__body d-flex flex-column justify-content-center p-4 p-lg-5">
+            <div class="emoji-slots-card__badge font-monospace text-primary small mb-3">
+                <i class="bi bi-controller me-1"></i> PWA &middot; Browser Game
+            </div>
+            <h2 class="emoji-slots-card__title fw-bold mb-3">Emoji Slots RPG</h2>
+            <p class="emoji-slots-card__desc text-secondary mb-4">Step into a glowing neon arcade, circa 1988. Emoji Slots is a browser-based fruit machine with full UK pub-style mechanics: spin three emoji reels, hold wheels between spins, nudge them up or down into line, and gamble your winnings through bonus rounds &mdash; Higher/Lower, Pick a Box, and Spin the Wheel. Random arcade encounters throw RPG-style events into the mix. Match cherries, unicorns, or the elusive &#x1F4AF; to fill your pockets. Hit a triple &#x1F4A9; and watch your coins vanish. Hit &#x1F480;&#x1F480;&#x1F480; and it&apos;s game over. Built with a synthwave CRT aesthetic, arcade sound effects, and background music.</p>
+            <div>
+                <a href="https://emojislotsrpg.philipnewborough.co.uk/" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-play-circle me-1"></i> Play Now
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
      GITHUB ACTIVITY
      ============================================================ -->
 <?php if (! empty($github_events)): ?>

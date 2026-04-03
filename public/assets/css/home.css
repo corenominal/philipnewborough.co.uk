@@ -384,6 +384,56 @@
     }
 }
 
+/* ---- Emoji Slots RPG card ---- */
+
+.emoji-slots-card {
+    background: rgba(255, 255, 255, 0.02);
+    transition: box-shadow 0.25s ease;
+}
+
+.emoji-slots-card:hover {
+    box-shadow: 0 0 0 1px rgba(var(--bs-primary-rgb), 0.25), 0 8px 40px rgba(0, 0, 0, 0.4);
+}
+
+.emoji-slots-card__video-col {
+    overflow: hidden;
+    background: #000;
+    min-height: 280px;
+}
+
+.emoji-slots-card__video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.emoji-slots-card__badge {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.emoji-slots-card__title {
+    font-size: 1.6rem;
+    background: linear-gradient(135deg, #ffffff 0%, rgba(var(--bs-primary-rgb), 0.85) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.emoji-slots-card__desc {
+    font-size: 0.93rem;
+    line-height: 1.7;
+}
+
+@media (max-width: 991.98px) {
+    .emoji-slots-card__video {
+        max-height: 340px;
+    }
+}
+
 /* ---- Responsive ---- */
 
 @media (max-width: 991.98px) {
