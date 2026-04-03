@@ -87,7 +87,8 @@
     <div class="home-section-label">
         <i class="bi bi-joystick me-1"></i> Project Spotlight
     </div>
-    <div class="emoji-slots-card row g-0 align-items-stretch rounded overflow-hidden border border-secondary border-opacity-25">
+    <div class="emoji-slots-card row g-0 align-items-stretch rounded overflow-hidden border border-secondary border-opacity-25 position-relative">
+        <a href="https://emojislotsrpg.philipnewborough.co.uk/" class="stretched-link" target="_blank" rel="noopener noreferrer" aria-label="Play Emoji Slots RPG"></a>
         <div class="col-lg-6 emoji-slots-card__video-col">
             <video
                 class="emoji-slots-card__video"
