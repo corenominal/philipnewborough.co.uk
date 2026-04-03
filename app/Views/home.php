@@ -81,36 +81,88 @@
 <script defer src="/assets/js/home-hero-network.js"></script>
 
 <!-- ============================================================
-     EMOJI SLOTS RPG
+     PROJECT SPOTLIGHT
      ============================================================ -->
 <section class="container px-4 my-5 animate-on-scroll">
     <div class="home-section-label">
         <i class="bi bi-joystick me-1"></i> Project Spotlight
     </div>
-    <div class="emoji-slots-card row g-0 align-items-stretch rounded overflow-hidden border border-secondary border-opacity-25 position-relative">
-        <a href="https://emojislotsrpg.philipnewborough.co.uk/" class="stretched-link" target="_blank" rel="noopener noreferrer" aria-label="Play Emoji Slots RPG"></a>
-        <div class="col-lg-6 emoji-slots-card__video-col">
-            <video
-                class="emoji-slots-card__video"
-                src="/assets/video/emojislotsrpg.mp4"
-                autoplay
-                loop
-                muted
-                playsinline
-                aria-label="Emoji Slots RPG gameplay preview">
-            </video>
+    <div class="project-carousel" id="project-carousel" aria-label="Project Spotlight carousel">
+        <div class="project-carousel__track">
+
+            <!-- Slide 1: Emoji Slots RPG -->
+            <div class="project-carousel__slide is-active" role="group" aria-label="Project 1 of 2">
+                <div class="project-card row g-0 align-items-stretch rounded overflow-hidden border border-secondary border-opacity-25 position-relative">
+                    <a href="https://emojislotsrpg.philipnewborough.co.uk/" class="stretched-link" target="_blank" rel="noopener noreferrer" aria-label="Play Emoji Slots RPG"></a>
+                    <div class="col-lg-6 project-card__video-col">
+                        <video
+                            class="project-card__video"
+                            src="/assets/video/emojislotsrpg.mp4"
+                            autoplay
+                            loop
+                            muted
+                            playsinline
+                            aria-label="Emoji Slots RPG gameplay preview">
+                        </video>
+                    </div>
+                    <div class="col-lg-6 project-card__body d-flex flex-column justify-content-center p-4 p-lg-5">
+                        <div class="project-card__badge font-monospace text-primary small mb-3">
+                            <i class="bi bi-controller me-1"></i> PWA &middot; Browser Game
+                        </div>
+                        <h2 class="project-card__title fw-bold mb-3">Emoji Slots RPG</h2>
+                        <p class="project-card__desc text-secondary mb-4">Step into a glowing neon arcade, circa 1988. Emoji Slots is a browser-based fruit machine with full UK pub-style mechanics: spin three emoji reels, hold wheels between spins, nudge them up or down into line, and gamble your winnings through bonus rounds - Higher/Lower, Pick a Box, and Spin the Wheel. Random arcade encounters throw RPG-style events into the mix. Match cherries, unicorns, or the elusive &#x1F4AF; to fill your pockets. Hit a triple &#x1F4A9; and watch your coins vanish. Hit &#x1F480;&#x1F480;&#x1F480; and it&apos;s game over. Built with a synthwave CRT aesthetic, arcade sound effects, and background music.</p>
+                        <div>
+                            <a href="https://emojislotsrpg.philipnewborough.co.uk/" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">
+                                <i class="bi bi-play-circle me-1"></i> Play Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Favicon & PWA Icon Generator -->
+            <div class="project-carousel__slide" role="group" aria-label="Project 2 of 2">
+                <div class="project-card row g-0 align-items-stretch rounded overflow-hidden border border-secondary border-opacity-25 position-relative">
+                    <a href="https://favicons-pwa.philipnewborough.co.uk/" class="stretched-link" target="_blank" rel="noopener noreferrer" aria-label="Open Favicon and PWA Icon Generator"></a>
+                    <div class="col-lg-6 project-card__video-col">
+                        <video
+                            class="project-card__video"
+                            src="/assets/video/favicon-pwa-icon-generator.mp4"
+                            loop
+                            muted
+                            playsinline
+                            aria-label="Favicon and PWA Icon Generator preview">
+                        </video>
+                    </div>
+                    <div class="col-lg-6 project-card__body d-flex flex-column justify-content-center p-4 p-lg-5">
+                        <div class="project-card__badge font-monospace text-primary small mb-3">
+                            <i class="bi bi-image me-1"></i> PWA &middot; Browser Tool
+                        </div>
+                        <h2 class="project-card__title fw-bold mb-3">Favicon &amp; PWA Icon Generator</h2>
+                        <p class="project-card__desc text-secondary mb-4">A free, browser-based tool that generates every icon size your website or Progressive Web App needs &mdash; no server uploads, no account required. All processing happens entirely in the browser using the Canvas API.</p>
+                        <div>
+                            <a href="https://favicons-pwa.philipnewborough.co.uk/" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">
+                                <i class="bi bi-box-arrow-up-right me-1"></i> Open Tool
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="col-lg-6 emoji-slots-card__body d-flex flex-column justify-content-center p-4 p-lg-5">
-            <div class="emoji-slots-card__badge font-monospace text-primary small mb-3">
-                <i class="bi bi-controller me-1"></i> PWA &middot; Browser Game
+
+        <!-- Carousel controls -->
+        <div class="project-carousel__controls d-flex align-items-center justify-content-center gap-3 mt-3">
+            <button class="project-carousel__btn" id="project-prev" aria-label="Previous project">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+            <div class="project-carousel__dots" role="tablist" aria-label="Project slides">
+                <button class="project-carousel__dot active" role="tab" aria-selected="true" aria-label="Emoji Slots RPG" data-index="0"></button>
+                <button class="project-carousel__dot" role="tab" aria-selected="false" aria-label="Favicon and PWA Icon Generator" data-index="1"></button>
             </div>
-            <h2 class="emoji-slots-card__title fw-bold mb-3">Emoji Slots RPG</h2>
-            <p class="emoji-slots-card__desc text-secondary mb-4">Step into a glowing neon arcade, circa 1988. Emoji Slots is a browser-based fruit machine with full UK pub-style mechanics: spin three emoji reels, hold wheels between spins, nudge them up or down into line, and gamble your winnings through bonus rounds &mdash; Higher/Lower, Pick a Box, and Spin the Wheel. Random arcade encounters throw RPG-style events into the mix. Match cherries, unicorns, or the elusive &#x1F4AF; to fill your pockets. Hit a triple &#x1F4A9; and watch your coins vanish. Hit &#x1F480;&#x1F480;&#x1F480; and it&apos;s game over. Built with a synthwave CRT aesthetic, arcade sound effects, and background music.</p>
-            <div>
-                <a href="https://emojislotsrpg.philipnewborough.co.uk/" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">
-                    <i class="bi bi-play-circle me-1"></i> Play Now
-                </a>
-            </div>
+            <button class="project-carousel__btn" id="project-next" aria-label="Next project">
+                <i class="bi bi-chevron-right"></i>
+            </button>
         </div>
     </div>
 </section>

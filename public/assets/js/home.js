@@ -78,3 +78,45 @@ const scrollObserver = new IntersectionObserver(
 document.querySelectorAll('.animate-on-scroll').forEach((el) => {
   scrollObserver.observe(el);
 });
+
+// -- Project carousel --------------------------------------------------------
+
+const projectCarousel = document.getElementById('project-carousel');
+
+if (projectCarousel) {
+  const slides = Array.from(projectCarousel.querySelectorAll('.project-carousel__slide'));
+  const dots = Array.from(projectCarousel.querySelectorAll('.project-carousel__dot'));
+  const prevBtn = document.getElementById('project-prev');
+  const nextBtn = document.getElementById('project-next');
+  let current = 0;
+
+  function goToSlide(index) {
+    const leavingVideo = slides[current].querySelector('video');
+    if (leavingVideo) leavingVideo.pause();
+
+    slides[current].classList.remove('is-active');
+    dots[current].classList.remove('active');
+    dots[current].setAttribute('aria-selected', 'false');
+
+    current = (index + slides.length) % slides.length;
+
+    slides[current].classList.add('is-active');
+    dots[current].classList.add('active');
+    dots[current].setAttribute('aria-selected', 'true');
+
+    const enteringVideo = slides[current].querySelector('video');
+    if (enteringVideo) enteringVideo.play().catch(() => {});
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(current - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(current + 1));
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => goToSlide(Number(dot.dataset.index)));
+  });
+
+  projectCarousel.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') goToSlide(current - 1);
+    if (e.key === 'ArrowRight') goToSlide(current + 1);
+  });
+}
