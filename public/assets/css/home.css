@@ -489,6 +489,19 @@
     line-height: 1.7;
 }
 
+.project-card__features {
+    padding-left: 1.1rem;
+    line-height: 1.6;
+}
+
+.project-card__features li {
+    margin-bottom: 0.35rem;
+}
+
+.project-card__features li:last-child {
+    margin-bottom: 0;
+}
+
 /* ---- Responsive ---- */
 
 @media (max-width: 991.98px) {

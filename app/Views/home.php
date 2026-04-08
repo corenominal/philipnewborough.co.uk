@@ -90,8 +90,46 @@
     <div class="project-carousel" id="project-carousel" aria-label="Project Spotlight carousel">
         <div class="project-carousel__track">
 
-            <!-- Slide 1: Emoji Slots RPG -->
-            <div class="project-carousel__slide is-active" role="group" aria-label="Project 1 of 2">
+            <!-- Slide 1: Flatspace Commander -->
+            <div class="project-carousel__slide is-active" role="group" aria-label="Project 1 of 3">
+                <div class="project-card row g-0 align-items-stretch rounded overflow-hidden border border-secondary border-opacity-25 position-relative">
+                    <a href="https://flatspace-commander.philipnewborough.co.uk/" class="stretched-link" target="_blank" rel="noopener noreferrer" aria-label="Play Flatspace Commander"></a>
+                    <div class="col-lg-6 project-card__video-col">
+                        <video
+                            class="project-card__video"
+                            src="/assets/video/flatspace-commander.mp4"
+                            autoplay
+                            loop
+                            muted
+                            playsinline
+                            aria-label="Flatspace Commander gameplay preview">
+                        </video>
+                    </div>
+                    <div class="col-lg-6 project-card__body d-flex flex-column justify-content-center p-4 p-lg-5">
+                        <div class="project-card__badge font-monospace text-primary small mb-3">
+                            <i class="bi bi-rocket me-1"></i> PWA &middot; Browser Game
+                        </div>
+                        <h2 class="project-card__title fw-bold mb-3">Flatspace Commander</h2>
+                        <p class="project-card__desc text-secondary mb-3">A 1-bit, vertical-scrolling space trader and combat simulator for the browser - inspired by the Acornsoft/C64 classic <em>Elite</em>. Built as a Progressive Web App with pure vanilla JavaScript, HTML5 Canvas, and CSS3.</p>
+                        <h3 class="h5">Features</h3>
+                        <ul class="project-card__features text-secondary small mb-4">
+                            <li><strong class="text-body-secondary">Flight</strong> - Scroll between star systems, dodge asteroids, mine minerals, survive combat encounters.</li>
+                            <li><strong class="text-body-secondary">Combat</strong> - 1-bit wireframe dogfights against pirates, traders, and Thargoid aliens. Pulse, Beam &amp; Military lasers, shields, and cargo pod drops.</li>
+                            <li><strong class="text-body-secondary">Trade</strong> - 17 Elite-style commodities with prices driven by tech level, government, and economy. Buy low, sell high.</li>
+                            <li><strong class="text-body-secondary">Equipment</strong> - Upgrade your Cobra with mining lasers, shield generators, docking computers, galactic hyperdrive, and more.</li>
+                            <li><strong class="text-body-secondary">Galaxy Map</strong> - 256 systems procedurally generated via a seeded LCG - identical on every device, no server required.</li>
+                        </ul>
+                        <div>
+                            <a href="https://flatspace-commander.philipnewborough.co.uk/" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">
+                                <i class="bi bi-play-circle me-1"></i> Play Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Emoji Slots RPG -->
+            <div class="project-carousel__slide" role="group" aria-label="Project 2 of 3">
                 <div class="project-card row g-0 align-items-stretch rounded overflow-hidden border border-secondary border-opacity-25 position-relative">
                     <a href="https://emojislotsrpg.philipnewborough.co.uk/" class="stretched-link" target="_blank" rel="noopener noreferrer" aria-label="Play Emoji Slots RPG"></a>
                     <div class="col-lg-6 project-card__video-col">
@@ -120,8 +158,8 @@
                 </div>
             </div>
 
-            <!-- Slide 2: Favicon & PWA Icon Generator -->
-            <div class="project-carousel__slide" role="group" aria-label="Project 2 of 2">
+            <!-- Slide 3: Favicon & PWA Icon Generator -->
+            <div class="project-carousel__slide" role="group" aria-label="Project 3 of 3">
                 <div class="project-card row g-0 align-items-stretch rounded overflow-hidden border border-secondary border-opacity-25 position-relative">
                     <a href="https://favicons-pwa.philipnewborough.co.uk/" class="stretched-link" target="_blank" rel="noopener noreferrer" aria-label="Open Favicon and PWA Icon Generator"></a>
                     <div class="col-lg-6 project-card__video-col">
@@ -139,7 +177,7 @@
                             <i class="bi bi-image me-1"></i> PWA &middot; Browser Tool
                         </div>
                         <h2 class="project-card__title fw-bold mb-3">Favicon &amp; PWA Icon Generator</h2>
-                        <p class="project-card__desc text-secondary mb-4">A free, browser-based tool that generates every icon size your website or Progressive Web App needs &mdash; no server uploads, no account required. All processing happens entirely in the browser using the Canvas API.</p>
+                        <p class="project-card__desc text-secondary mb-4">A free, browser-based tool that generates every icon size your website or Progressive Web App needs - no server uploads, no account required. All processing happens entirely in the browser using the Canvas API.</p>
                         <div>
                             <a href="https://favicons-pwa.philipnewborough.co.uk/" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">
                                 <i class="bi bi-box-arrow-up-right me-1"></i> Open Tool
@@ -157,8 +195,9 @@
                 <i class="bi bi-chevron-left"></i>
             </button>
             <div class="project-carousel__dots" role="tablist" aria-label="Project slides">
-                <button class="project-carousel__dot active" role="tab" aria-selected="true" aria-label="Emoji Slots RPG" data-index="0"></button>
-                <button class="project-carousel__dot" role="tab" aria-selected="false" aria-label="Favicon and PWA Icon Generator" data-index="1"></button>
+                <button class="project-carousel__dot active" role="tab" aria-selected="true" aria-label="Flatspace Commander" data-index="0"></button>
+                <button class="project-carousel__dot" role="tab" aria-selected="false" aria-label="Emoji Slots RPG" data-index="1"></button>
+                <button class="project-carousel__dot" role="tab" aria-selected="false" aria-label="Favicon and PWA Icon Generator" data-index="2"></button>
             </div>
             <button class="project-carousel__btn" id="project-next" aria-label="Next project">
                 <i class="bi bi-chevron-right"></i>
