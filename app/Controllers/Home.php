@@ -104,13 +104,23 @@ class Home extends BaseController
                 $bookmark['created_at_formatted'] = '';
             }
 
-            $bookmark['domain'] = '';
+            $bookmark['domain']            = '';
+            $bookmark['youtube_video_id']  = '';
 
             if (! empty($bookmark['url'])) {
                 $parsed = parse_url($bookmark['url']);
 
                 if (isset($parsed['host'])) {
                     $bookmark['domain'] = preg_replace('/^www\./', '', $parsed['host']);
+                }
+
+                $host = $parsed['host'] ?? '';
+
+                if (in_array($host, ['www.youtube.com', 'youtube.com'], true)) {
+                    parse_str($parsed['query'] ?? '', $qs);
+                    $bookmark['youtube_video_id'] = $qs['v'] ?? '';
+                } elseif ($host === 'youtu.be') {
+                    $bookmark['youtube_video_id'] = ltrim($parsed['path'] ?? '', '/');
                 }
             }
 

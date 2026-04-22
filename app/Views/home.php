@@ -434,6 +434,15 @@
                             <div class="text-muted" style="font-size: 0.7rem;"><?= esc($bookmark['domain']) ?></div>
                         </div>
                     </div>
+                    <?php if (! empty($bookmark['youtube_video_id'])): ?>
+                    <img src="https://img.youtube.com/vi/<?= esc($bookmark['youtube_video_id']) ?>/hqdefault.jpg"
+                         alt=""
+                         class="bookmark-item__thumbnail w-100 rounded"
+                         loading="lazy">
+                    <?php endif; ?>
+                    <?php if (! empty($bookmark['notes_html'])): ?>
+                    <div class="bookmark-item__notes text-body-secondary small"><?= $bookmark['notes_html'] ?></div>
+                    <?php endif; ?>
                     <?php if (! empty($bookmark['tags'])): ?>
                     <div class="d-flex flex-wrap gap-1">
                         <?php foreach (array_slice(explode(',', $bookmark['tags']), 0, 3) as $tag): ?>

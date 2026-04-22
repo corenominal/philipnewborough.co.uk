@@ -328,6 +328,11 @@
     max-width: 100%;
 }
 
+.bookmark-item__thumbnail {
+    max-height: 226px;
+    object-fit: cover;
+}
+
 /* ---- Scroll Animations ---- */
 
 .animate-on-scroll {
