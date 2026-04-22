@@ -434,8 +434,8 @@
                             <div class="text-muted" style="font-size: 0.7rem;"><?= esc($bookmark['domain']) ?></div>
                         </div>
                     </div>
-                    <?php if (! empty($bookmark['youtube_video_id'])): ?>
-                    <img src="https://img.youtube.com/vi/<?= esc($bookmark['youtube_video_id']) ?>/hqdefault.jpg"
+                    <?php if (! empty($bookmark['image'])): ?>
+                    <img src="<?= esc($bookmarksUrl . '/media/' . $bookmark['image']) ?>"
                          alt=""
                          class="bookmark-item__thumbnail w-100 rounded"
                          loading="lazy">
