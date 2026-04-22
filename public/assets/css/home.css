@@ -268,7 +268,7 @@
 }
 
 .status-card__media-img {
-    max-height: 220px;
+    max-height: 340px;
     max-width: 100%;
     object-fit: cover;
     border-radius: 6px;
