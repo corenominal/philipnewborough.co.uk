@@ -358,15 +358,34 @@
                                     <?php foreach ($status['media'] as $media): ?>
                                     <?php $mime = $media['mime_type'] ?? ''; $mediaUrl = esc(rtrim($statusUrl, '/') . $media['url']); ?>
                                     <?php if (str_starts_with($mime, 'image/')): ?>
-                                    <img src="<?= $mediaUrl ?>"
-                                         alt="<?= esc($media['description'] ?? '') ?>"
-                                         class="status-card__media-img rounded"
-                                         loading="lazy">
+                                    <button type="button"
+                                            class="status-media-trigger border-0 bg-transparent p-0"
+                                            data-media-type="image"
+                                            data-media-src="<?= $mediaUrl ?>"
+                                            data-media-alt="<?= esc($media['description'] ?? '') ?>"
+                                            aria-label="View image larger">
+                                        <img src="<?= $mediaUrl ?>"
+                                             alt="<?= esc($media['description'] ?? '') ?>"
+                                             class="status-card__media-img rounded"
+                                             loading="lazy">
+                                    </button>
                                     <?php elseif (str_starts_with($mime, 'video/')): ?>
-                                    <video controls class="status-card__media-video rounded" preload="metadata">
-                                        <source src="<?= $mediaUrl ?>" type="<?= esc($mime) ?>">
-                                        <?= esc($media['description'] ?? 'Video') ?>
-                                    </video>
+                                    <div class="position-relative">
+                                        <video controls class="status-card__media-video rounded" preload="metadata">
+                                            <source src="<?= $mediaUrl ?>" type="<?= esc($mime) ?>">
+                                            <?= esc($media['description'] ?? 'Video') ?>
+                                        </video>
+                                        <button type="button"
+                                                class="status-media-trigger position-absolute top-0 end-0 m-1 btn btn-sm btn-dark opacity-75"
+                                                data-media-type="video"
+                                                data-media-src="<?= $mediaUrl ?>"
+                                                data-media-mime="<?= esc($mime) ?>"
+                                                data-media-alt="<?= esc($media['description'] ?? '') ?>"
+                                                title="Expand video"
+                                                aria-label="Expand video">
+                                            <i class="bi bi-fullscreen" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
                                     <?php endif; ?>
                                     <?php endforeach; ?>
                                 </div>
@@ -437,5 +456,20 @@
     </div>
 </div>
 <?php endif; ?>
+
+<!-- ============================================================
+     MEDIA MODAL
+     ============================================================ -->
+<div class="modal fade" id="mediaModal" tabindex="-1" aria-labelledby="mediaModalLabel" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-dark">
+            <div class="modal-header py-2">
+                <span class="modal-title text-body-secondary small" id="mediaModalLabel"></span>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-2 text-center" id="mediaModalBody"></div>
+        </div>
+    </div>
+</div>
 
 <?= $this->endSection() ?>

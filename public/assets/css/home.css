@@ -258,11 +258,21 @@
     margin-bottom: 0;
 }
 
+.status-media-trigger {
+    cursor: pointer;
+    display: block;
+}
+
+.status-media-trigger:hover .status-card__media-img {
+    opacity: 0.82;
+}
+
 .status-card__media-img {
     max-height: 220px;
     max-width: 100%;
     object-fit: cover;
     border-radius: 6px;
+    transition: opacity 0.15s ease;
 }
 
 .status-card__media-video {
@@ -274,6 +284,13 @@
     object-fit: cover;
     border-radius: 6px;
     background: #000;
+}
+
+#mediaModalBody img,
+#mediaModalBody video {
+    max-height: 85vh;
+    width: auto;
+    max-width: 100%;
 }
 
 /* ---- Bookmarks ---- */

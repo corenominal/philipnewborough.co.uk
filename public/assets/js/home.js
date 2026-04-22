@@ -120,3 +120,44 @@ if (projectCarousel) {
     if (e.key === 'ArrowRight') goToSlide(current + 1);
   });
 }
+
+// -- Status media modal -------------------------------------------------------
+
+const mediaModal = document.getElementById('mediaModal');
+
+if (mediaModal) {
+  document.querySelectorAll('.status-media-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const { mediaType, mediaSrc, mediaAlt = '', mediaMime = '' } = btn.dataset;
+      const body = document.getElementById('mediaModalBody');
+      const label = document.getElementById('mediaModalLabel');
+
+      body.innerHTML = '';
+      label.textContent = mediaAlt;
+
+      if (mediaType === 'image') {
+        const img = document.createElement('img');
+        img.src = mediaSrc;
+        img.alt = mediaAlt;
+        img.className = 'img-fluid rounded';
+        body.appendChild(img);
+      } else if (mediaType === 'video') {
+        const video = document.createElement('video');
+        video.controls = true;
+        video.autoplay = true;
+        video.className = 'w-100 rounded';
+        const source = document.createElement('source');
+        source.src = mediaSrc;
+        source.type = mediaMime;
+        video.appendChild(source);
+        body.appendChild(video);
+      }
+
+      bootstrap.Modal.getOrCreateInstance(mediaModal).show();
+    });
+  });
+
+  mediaModal.addEventListener('hidden.bs.modal', () => {
+    document.getElementById('mediaModalBody').innerHTML = '';
+  });
+}
