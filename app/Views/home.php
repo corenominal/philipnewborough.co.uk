@@ -323,7 +323,7 @@
                 <i class="bi bi-chat-square-dots-fill me-1"></i> Status Updates
             </div>
             <div class="d-flex flex-column gap-3">
-                <?php foreach (array_slice($statuses, 0, 5) as $status): ?>
+                <?php foreach (array_slice($statuses, 0, 10) as $status): ?>
                 <article class="card status-card card-animate border-secondary border-opacity-25">
                     <div class="card-body">
                         <div class="d-flex align-items-start gap-3">
