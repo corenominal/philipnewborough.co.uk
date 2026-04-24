@@ -252,7 +252,7 @@
         <i class="bi bi-journal-richtext me-1"></i> Latest Posts
     </div>
     <div class="row g-3">
-        <?php foreach (array_slice($blog_posts, 0, 3) as $post): ?>
+        <?php foreach (array_slice($blog_posts, 0, 6) as $post): ?>
         <div class="col-md-6 col-xl-4 card-animate">
             <article class="card h-100 blog-card border-secondary border-opacity-25 position-relative">
                 <?php if (! empty($post['slug']) && $blogUrl): ?>
