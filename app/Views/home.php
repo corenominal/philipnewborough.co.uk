@@ -207,43 +207,6 @@
 </section>
 
 <!-- ============================================================
-     GITHUB ACTIVITY
-     ============================================================ -->
-<?php if (! empty($github_events)): ?>
-<section class="container px-4 my-5 animate-on-scroll">
-    <div class="home-section-label">
-        <i class="bi bi-github me-1"></i> Recent Public Activity
-    </div>
-    <div class="terminal-window">
-        <div class="terminal-header">
-            <span class="terminal-dot terminal-dot--close"></span>
-            <span class="terminal-dot terminal-dot--minimize"></span>
-            <span class="terminal-dot terminal-dot--maximize"></span>
-            <span class="terminal-header__title font-monospace text-secondary ms-3 small">
-                corenominal@github — git log --oneline
-                <span class="text-muted">(<?= count($github_events) ?> events)</span>
-            </span>
-        </div>
-        <div class="terminal-body">
-            <?php foreach ($github_events as $event): ?>
-            <a href="<?= esc($event['link']) ?>"
-               class="terminal-row card-animate d-flex align-items-center gap-2 gap-sm-3 text-decoration-none"
-               target="_blank"
-               rel="noopener noreferrer">
-                <span class="terminal-row__time font-monospace text-muted d-none d-sm-block"><?= esc($event['time_ago']) ?></span>
-                <span class="badge bg-<?= esc($event['label_class']) ?>-subtle text-<?= esc($event['label_class']) ?>-emphasis border border-<?= esc($event['label_class']) ?>-subtle font-monospace text-nowrap"
-                      style="font-size: 0.65rem; min-width: 5.5rem; text-align: center;"><?= esc($event['label']) ?></span>
-                <i class="bi <?= esc($event['icon']) ?> text-secondary flex-shrink-0"></i>
-                <span class="terminal-row__desc text-body-secondary flex-grow-1 small text-truncate"><?= $event['description'] ?></span>
-                <i class="bi bi-arrow-up-right text-muted flex-shrink-0 ms-auto d-none d-md-block" style="font-size: 0.7rem;"></i>
-            </a>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
-<?php endif; ?>
-
-<!-- ============================================================
      BLOG POSTS
      ============================================================ -->
 <?php if (! empty($blog_posts)): ?>
@@ -475,6 +438,43 @@
             </div>
             <?php endif; ?>
 </div>
+</section>
+<?php endif; ?>
+
+<!-- ============================================================
+     GITHUB ACTIVITY
+     ============================================================ -->
+<?php if (! empty($github_events)): ?>
+<section class="container px-4 my-5 animate-on-scroll">
+    <div class="home-section-label">
+        <i class="bi bi-github me-1"></i> Recent Public Activity
+    </div>
+    <div class="terminal-window">
+        <div class="terminal-header">
+            <span class="terminal-dot terminal-dot--close"></span>
+            <span class="terminal-dot terminal-dot--minimize"></span>
+            <span class="terminal-dot terminal-dot--maximize"></span>
+            <span class="terminal-header__title font-monospace text-secondary ms-3 small">
+                corenominal@github — git log --oneline
+                <span class="text-muted">(<?= count($github_events) ?> events)</span>
+            </span>
+        </div>
+        <div class="terminal-body">
+            <?php foreach ($github_events as $event): ?>
+            <a href="<?= esc($event['link']) ?>"
+               class="terminal-row card-animate d-flex align-items-center gap-2 gap-sm-3 text-decoration-none"
+               target="_blank"
+               rel="noopener noreferrer">
+                <span class="terminal-row__time font-monospace text-muted d-none d-sm-block"><?= esc($event['time_ago']) ?></span>
+                <span class="badge bg-<?= esc($event['label_class']) ?>-subtle text-<?= esc($event['label_class']) ?>-emphasis border border-<?= esc($event['label_class']) ?>-subtle font-monospace text-nowrap"
+                      style="font-size: 0.65rem; min-width: 5.5rem; text-align: center;"><?= esc($event['label']) ?></span>
+                <i class="bi <?= esc($event['icon']) ?> text-secondary flex-shrink-0"></i>
+                <span class="terminal-row__desc text-body-secondary flex-grow-1 small text-truncate"><?= $event['description'] ?></span>
+                <i class="bi bi-arrow-up-right text-muted flex-shrink-0 ms-auto d-none d-md-block" style="font-size: 0.7rem;"></i>
+            </a>
+            <?php endforeach; ?>
+        </div>
+    </div>
 </section>
 <?php endif; ?>
 
