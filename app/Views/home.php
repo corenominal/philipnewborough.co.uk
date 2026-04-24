@@ -210,7 +210,7 @@
      BLOG POSTS
      ============================================================ -->
 <?php if (! empty($blog_posts)): ?>
-<section class="home-section--blog animate-on-scroll">
+<section class="home-section--blog animate-on-scroll border-top">
 <div class="container px-4">
     <div class="home-section-label home-section-label--blog">
         <i class="bi bi-journal-richtext me-1"></i> Latest Posts
@@ -278,7 +278,7 @@
      STATUS UPDATES
      ============================================================ -->
 <?php if (! empty($statuses)): ?>
-<section class="home-section--status animate-on-scroll">
+<section class="home-section--status animate-on-scroll border-top">
 <div class="container px-4">
     <div class="home-section-label home-section-label--status d-lg-none">
         <i class="bi bi-chat-square-dots-fill me-1"></i> Status Updates
@@ -381,7 +381,7 @@
      BOOKMARKS
      ============================================================ -->
 <?php if (! empty($bookmarks)): ?>
-<section class="home-section--bookmarks animate-on-scroll">
+<section class="home-section--bookmarks animate-on-scroll border-top border-bottom">
 <div class="container px-4">
     <div class="home-section-label home-section-label--bookmarks">
         <i class="bi bi-bookmarks-fill me-1"></i> Bookmarks
