@@ -318,12 +318,21 @@
 
         <!-- STATUS UPDATES -->
         <?php if (! empty($statuses)): ?>
-        <div class="col-lg-7 animate-on-scroll">
-            <div class="home-section-label">
+        <div class="col-12 animate-on-scroll">
+            <div class="home-section-label d-lg-none">
                 <i class="bi bi-chat-square-dots-fill me-1"></i> Status Updates
             </div>
-            <div class="d-flex flex-column gap-3">
-                <?php foreach (array_slice($statuses, 0, 10) as $status): ?>
+            <div class="row g-4 g-lg-5">
+                <div class="col-lg-4 d-none d-lg-block">
+                    <div class="home-section-label">
+                        <i class="bi bi-chat-square-dots-fill me-1"></i> Status Updates
+                    </div>
+                    <p class="text-secondary small">My short-form timeline &mdash; where I post thoughts, links, images, and whatever else is on my mind as it happens.</p>
+                    <p class="text-secondary small">I also syndicate to the Fediverse via <a href="https://indieweb.social/@corenominal" class="text-primary" target="_blank" rel="noopener noreferrer">Mastodon</a>, so you can follow me there if that&rsquo;s your preferred platform.</p>
+                </div>
+                <div class="col-lg-8">
+                    <div class="d-flex flex-column gap-3">
+                        <?php foreach (array_slice($statuses, 0, 10) as $status): ?>
                 <article class="card status-card card-animate border-secondary border-opacity-25">
                     <div class="card-body">
                         <div class="d-flex align-items-start gap-3">
@@ -394,26 +403,29 @@
                         </div>
                     </div>
                 </article>
-                <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php if ($statusUrl): ?>
+                    <div class="text-center mt-3">
+                        <a href="<?= esc($statusUrl) ?>" class="btn btn-sm btn-outline-primary" rel="noopener noreferrer">View all status updates</a>
+                    </div>
+                    <?php endif; ?>
+                </div>
             </div>
-            <?php if ($statusUrl): ?>
-            <div class="text-center mt-3">
-                <a href="<?= esc($statusUrl) ?>" class="btn btn-sm btn-outline-primary" rel="noopener noreferrer">View all status updates</a>
-            </div>
-            <?php endif; ?>
         </div>
         <?php endif; ?>
 
         <!-- BOOKMARKS -->
         <?php if (! empty($bookmarks)): ?>
-        <div class="col-lg-5 animate-on-scroll">
+        <div class="col-12 animate-on-scroll">
             <div class="home-section-label">
                 <i class="bi bi-bookmarks-fill me-1"></i> Bookmarks
             </div>
-            <div class="d-flex flex-column gap-2">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
                 <?php foreach (array_slice($bookmarks, 0, 8) as $bookmark): ?>
+                <div class="col">
                 <a href="<?= esc($bookmark['url']) ?>"
-                   class="bookmark-item card-animate d-flex flex-column gap-2 text-decoration-none p-3 rounded border border-secondary border-opacity-25"
+                   class="bookmark-item card-animate d-flex flex-column gap-2 text-decoration-none p-3 rounded border border-secondary border-opacity-25 h-100"
                    target="_blank"
                    rel="noopener noreferrer">
                     <div class="d-flex align-items-center gap-3 overflow-hidden">
@@ -452,6 +464,7 @@
                     </div>
                     <?php endif; ?>
                 </a>
+                </div>
                 <?php endforeach; ?>
             </div>
             <?php if ($bookmarksUrl): ?>
