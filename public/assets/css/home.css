@@ -148,6 +148,29 @@
     margin-bottom: 0.85rem;
 }
 
+.home-section-label--blog,
+.home-section-label--status,
+.home-section-label--bookmarks {
+    color: var(--bs-primary);
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--bs-primary);
+}
+
+.home-section--blog {
+    background: rgba(0, 0, 0, 0.15);
+    padding: 3rem 0;
+}
+
+.home-section--status {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 3rem 0;
+}
+
+.home-section--bookmarks {
+    background: rgba(0, 0, 0, 0.15);
+    padding: 3rem 0;
+}
+
 /* ---- Terminal ---- */
 
 .terminal-window {

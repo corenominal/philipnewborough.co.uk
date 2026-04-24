@@ -247,8 +247,9 @@
      BLOG POSTS
      ============================================================ -->
 <?php if (! empty($blog_posts)): ?>
-<section class="container px-4 mb-5 animate-on-scroll">
-    <div class="home-section-label">
+<section class="home-section--blog animate-on-scroll">
+<div class="container px-4">
+    <div class="home-section-label home-section-label--blog">
         <i class="bi bi-journal-richtext me-1"></i> Latest Posts
     </div>
     <div class="row g-3">
@@ -306,25 +307,22 @@
         <a href="<?= esc($blogUrl) ?>" class="btn btn-sm btn-outline-primary" rel="noopener noreferrer">View all posts</a>
     </div>
     <?php endif; ?>
+</div>
 </section>
 <?php endif; ?>
 
 <!-- ============================================================
-     STATUS UPDATES + BOOKMARKS
+     STATUS UPDATES
      ============================================================ -->
-<?php if (! empty($statuses) || ! empty($bookmarks)): ?>
-<div class="container px-4 mb-5">
-    <div class="row g-4">
-
-        <!-- STATUS UPDATES -->
-        <?php if (! empty($statuses)): ?>
-        <div class="col-12 animate-on-scroll">
-            <div class="home-section-label d-lg-none">
-                <i class="bi bi-chat-square-dots-fill me-1"></i> Status Updates
-            </div>
-            <div class="row g-4 g-lg-5">
+<?php if (! empty($statuses)): ?>
+<section class="home-section--status animate-on-scroll">
+<div class="container px-4">
+    <div class="home-section-label home-section-label--status d-lg-none">
+        <i class="bi bi-chat-square-dots-fill me-1"></i> Status Updates
+    </div>
+    <div class="row g-4 g-lg-5">
                 <div class="col-lg-4 d-none d-lg-block">
-                    <div class="home-section-label">
+                    <div class="home-section-label home-section-label--status">
                         <i class="bi bi-chat-square-dots-fill me-1"></i> Status Updates
                     </div>
                     <p class="text-secondary small">My short-form timeline &mdash; where I post thoughts, links, images, and whatever else is on my mind as it happens.</p>
@@ -412,16 +410,20 @@
                     <?php endif; ?>
                 </div>
             </div>
-        </div>
-        <?php endif; ?>
+</div>
+</section>
+<?php endif; ?>
 
-        <!-- BOOKMARKS -->
-        <?php if (! empty($bookmarks)): ?>
-        <div class="col-12 animate-on-scroll">
-            <div class="home-section-label">
-                <i class="bi bi-bookmarks-fill me-1"></i> Bookmarks
-            </div>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
+<!-- ============================================================
+     BOOKMARKS
+     ============================================================ -->
+<?php if (! empty($bookmarks)): ?>
+<section class="home-section--bookmarks animate-on-scroll">
+<div class="container px-4">
+    <div class="home-section-label home-section-label--bookmarks">
+        <i class="bi bi-bookmarks-fill me-1"></i> Bookmarks
+    </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
                 <?php foreach (array_slice($bookmarks, 0, 9) as $bookmark): ?>
                 <div class="col">
                 <a href="<?= esc($bookmark['url']) ?>"
@@ -472,11 +474,8 @@
                 <a href="<?= esc($bookmarksUrl) ?>" class="btn btn-sm btn-outline-primary" rel="noopener noreferrer">View all bookmarks</a>
             </div>
             <?php endif; ?>
-        </div>
-        <?php endif; ?>
-
-    </div>
 </div>
+</section>
 <?php endif; ?>
 
 <!-- ============================================================
