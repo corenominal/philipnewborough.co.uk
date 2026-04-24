@@ -324,39 +324,31 @@
                                     <?= $status['content_html'] ?>
                                 </div>
                                 <?php if (! empty($status['media'])): ?>
-                                <div class="mt-3 d-flex flex-wrap gap-2">
+                                <div class="timeline__media-grid timeline__media-grid--<?= count($status['media']) > 1 ? 'many' : 'single' ?>">
                                     <?php foreach ($status['media'] as $media): ?>
                                     <?php $mime = $media['mime_type'] ?? ''; $mediaUrl = esc(rtrim($statusUrl, '/') . $media['url']); ?>
-                                    <?php if (str_starts_with($mime, 'image/')): ?>
-                                    <button type="button"
-                                            class="status-media-trigger border-0 bg-transparent p-0"
-                                            data-media-type="image"
-                                            data-media-src="<?= $mediaUrl ?>"
-                                            data-media-alt="<?= esc($media['description'] ?? '') ?>"
-                                            aria-label="View image larger">
-                                        <img src="<?= $mediaUrl ?>"
-                                             alt="<?= esc($media['description'] ?? '') ?>"
-                                             class="status-card__media-img rounded"
-                                             loading="lazy">
-                                    </button>
-                                    <?php elseif (str_starts_with($mime, 'video/')): ?>
-                                    <div class="position-relative">
-                                        <video controls class="status-card__media-video rounded" preload="metadata">
-                                            <source src="<?= $mediaUrl ?>" type="<?= esc($mime) ?>">
-                                            <?= esc($media['description'] ?? 'Video') ?>
-                                        </video>
-                                        <button type="button"
-                                                class="status-media-trigger position-absolute top-0 end-0 m-1 btn btn-sm btn-dark opacity-75"
-                                                data-media-type="video"
-                                                data-media-src="<?= $mediaUrl ?>"
-                                                data-media-mime="<?= esc($mime) ?>"
-                                                data-media-alt="<?= esc($media['description'] ?? '') ?>"
-                                                title="Expand video"
-                                                aria-label="Expand video">
-                                            <i class="bi bi-fullscreen" aria-hidden="true"></i>
-                                        </button>
-                                    </div>
-                                    <?php endif; ?>
+                                    <figure class="timeline__media-item">
+                                        <?php if ($mime === 'video/mp4'): ?>
+                                            <video
+                                                class="timeline__media-video"
+                                                src="<?= $mediaUrl ?>"
+                                                controls
+                                                preload="metadata"
+                                                aria-label="<?= esc(! empty($media['description']) ? $media['description'] : 'Status video') ?>"
+                                            ></video>
+                                        <?php else: ?>
+                                            <img
+                                                class="timeline__media-image"
+                                                src="<?= $mediaUrl ?>"
+                                                alt="<?= esc(! empty($media['description']) ? $media['description'] : 'Status media') ?>"
+                                                loading="lazy"
+                                                decoding="async"
+                                            >
+                                        <?php endif; ?>
+                                        <?php if (! empty($media['description'])): ?>
+                                            <figcaption class="timeline__media-caption"><?= esc($media['description']) ?></figcaption>
+                                        <?php endif; ?>
+                                    </figure>
                                     <?php endforeach; ?>
                                 </div>
                                 <?php endif; ?>
@@ -481,14 +473,19 @@
 <!-- ============================================================
      MEDIA MODAL
      ============================================================ -->
-<div class="modal fade" id="mediaModal" tabindex="-1" aria-labelledby="mediaModalLabel" aria-modal="true" role="dialog">
+<div class="modal fade timeline-image-modal" id="timeline-image-modal" tabindex="-1" aria-labelledby="timeline-image-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content bg-dark">
-            <div class="modal-header py-2">
-                <span class="modal-title text-body-secondary small" id="mediaModalLabel"></span>
+        <div class="modal-content timeline-image-modal__content">
+            <div class="modal-header border-0 pb-0">
+                <h2 class="modal-title fs-6" id="timeline-image-modal-label">Image Preview</h2>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body p-2 text-center" id="mediaModalBody"></div>
+            <div class="modal-body pt-2">
+                <div id="timeline-image-modal-img-wrap" class="timeline-image-modal__image-wrap">
+                    <img id="timeline-image-modal-img" class="timeline-image-modal__image" src="" alt="">
+                </div>
+                <p id="timeline-image-modal-caption" class="timeline-image-modal__caption mb-0"></p>
+            </div>
         </div>
     </div>
 </div>

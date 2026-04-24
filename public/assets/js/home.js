@@ -121,43 +121,134 @@ if (projectCarousel) {
   });
 }
 
-// -- Status media modal -------------------------------------------------------
+// -- Status media ---------------------------------------------------------
 
-const mediaModal = document.getElementById('mediaModal');
+const statusSection    = document.querySelector('.home-section--status');
+const imageModalEl     = document.getElementById('timeline-image-modal');
+const imageModalImg    = document.getElementById('timeline-image-modal-img');
+const imageModalWrap   = document.getElementById('timeline-image-modal-img-wrap');
+const imageModalCapt   = document.getElementById('timeline-image-modal-caption');
+const imageModal       = imageModalEl && window.bootstrap
+  ? window.bootstrap.Modal.getOrCreateInstance(imageModalEl)
+  : null;
 
-if (mediaModal) {
-  document.querySelectorAll('.status-media-trigger').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const { mediaType, mediaSrc, mediaAlt = '', mediaMime = '' } = btn.dataset;
-      const body = document.getElementById('mediaModalBody');
-      const label = document.getElementById('mediaModalLabel');
+const initializeImageShimmer = (rootElement) => {
+  rootElement.querySelectorAll('.timeline__media-image').forEach((image) => {
+    if (image.dataset.shimmerInitialized === '1') {
+      return;
+    }
 
-      body.innerHTML = '';
-      label.textContent = mediaAlt;
+    image.dataset.shimmerInitialized = '1';
 
-      if (mediaType === 'image') {
-        const img = document.createElement('img');
-        img.src = mediaSrc;
-        img.alt = mediaAlt;
-        img.className = 'img-fluid rounded';
-        body.appendChild(img);
-      } else if (mediaType === 'video') {
-        const video = document.createElement('video');
-        video.controls = true;
-        video.autoplay = true;
-        video.className = 'w-100 rounded';
-        const source = document.createElement('source');
-        source.src = mediaSrc;
-        source.type = mediaMime;
-        video.appendChild(source);
-        body.appendChild(video);
+    const mediaItem = image.closest('.timeline__media-item');
+
+    if (!mediaItem) {
+      return;
+    }
+
+    const markAsLoaded = () => {
+      mediaItem.classList.add('has-loaded');
+      image.classList.add('is-loaded');
+    };
+
+    if (image.complete && image.naturalWidth > 0) {
+      markAsLoaded();
+      return;
+    }
+
+    image.addEventListener('load', markAsLoaded, { once: true });
+    image.addEventListener('error', () => {
+      mediaItem.classList.add('has-loaded');
+    }, { once: true });
+  });
+
+  rootElement.querySelectorAll('.timeline__media-video').forEach((video) => {
+    if (video.dataset.shimmerInitialized === '1') {
+      return;
+    }
+
+    video.dataset.shimmerInitialized = '1';
+
+    const mediaItem = video.closest('.timeline__media-item');
+
+    if (!mediaItem) {
+      return;
+    }
+
+    const markAsLoaded = () => mediaItem.classList.add('has-loaded');
+
+    if (video.readyState >= 1) {
+      markAsLoaded();
+      return;
+    }
+
+    video.addEventListener('loadedmetadata', markAsLoaded, { once: true });
+    video.addEventListener('error', markAsLoaded, { once: true });
+  });
+};
+
+if (statusSection) {
+  initializeImageShimmer(statusSection);
+
+  if (imageModal && imageModalImg && imageModalCapt) {
+    statusSection.addEventListener('click', (event) => {
+      const clickedImage = event.target.closest('.timeline__media-image');
+
+      if (!clickedImage) {
+        return;
       }
 
-      bootstrap.Modal.getOrCreateInstance(mediaModal).show();
-    });
-  });
+      event.preventDefault();
 
-  mediaModal.addEventListener('hidden.bs.modal', () => {
-    document.getElementById('mediaModalBody').innerHTML = '';
-  });
+      const fullSrc  = clickedImage.currentSrc || clickedImage.src;
+      const altText  = clickedImage.getAttribute('alt') || 'Full size image';
+      const imgWidth  = parseInt(clickedImage.dataset.width, 10) || 0;
+      const imgHeight = parseInt(clickedImage.dataset.height, 10) || 0;
+
+      imageModalImg.classList.remove('is-loaded');
+      imageModalImg.alt = altText;
+
+      if (imageModalWrap) {
+        imageModalWrap.classList.remove('has-loaded');
+        imageModalWrap.style.aspectRatio = '';
+        imageModalWrap.style.maxHeight   = '';
+        imageModalWrap.style.maxWidth    = '';
+
+        if (imgWidth > 0 && imgHeight > 0) {
+          imageModalWrap.style.aspectRatio = `${imgWidth} / ${imgHeight}`;
+
+          if (imgHeight > imgWidth) {
+            imageModalWrap.style.maxHeight = '78vh';
+            imageModalWrap.style.maxWidth  = `calc(78vh * ${imgWidth} / ${imgHeight})`;
+          }
+        }
+      }
+
+      const markModalLoaded = () => {
+        imageModalImg.classList.add('is-loaded');
+        if (imageModalWrap) {
+          imageModalWrap.classList.add('has-loaded');
+        }
+      };
+
+      imageModalImg.addEventListener('load', markModalLoaded, { once: true });
+      imageModalImg.addEventListener('error', markModalLoaded, { once: true });
+
+      imageModalImg.src = fullSrc;
+
+      if (imageModalCapt) {
+        imageModalCapt.textContent = altText;
+      }
+
+      imageModal.show();
+    });
+
+    imageModalEl.addEventListener('hidden.bs.modal', () => {
+      imageModalImg.src = '';
+      imageModalImg.classList.remove('is-loaded');
+      if (imageModalWrap) {
+        imageModalWrap.classList.remove('has-loaded');
+      }
+    });
+  }
 }
