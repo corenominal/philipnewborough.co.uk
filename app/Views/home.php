@@ -422,7 +422,7 @@
                 <i class="bi bi-bookmarks-fill me-1"></i> Bookmarks
             </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
-                <?php foreach (array_slice($bookmarks, 0, 8) as $bookmark): ?>
+                <?php foreach (array_slice($bookmarks, 0, 9) as $bookmark): ?>
                 <div class="col">
                 <a href="<?= esc($bookmark['url']) ?>"
                    class="bookmark-item card-animate d-flex flex-column gap-2 text-decoration-none p-3 rounded border border-secondary border-opacity-25 h-100"
