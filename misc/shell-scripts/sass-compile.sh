@@ -11,6 +11,6 @@ if [ ! -x "$SASS_BIN" ]; then
 fi
 
 "$SASS_BIN" -w \
-"$PROJECT_ROOT/public/assets/sass/bootstrap-custom.scss:$PROJECT_ROOT/public/assets/css/vendor/bootstrap-designspace.css"
+"$PROJECT_ROOT/public/assets/sass/bootstrap-custom.scss:$PROJECT_ROOT/public/assets/css/vendor/bootstrap-custom.css"
 
 exit 0

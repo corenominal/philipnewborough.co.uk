@@ -1,0 +1,77 @@
+// Bootstrap functions (needed for some variables/maps)
+@import "../../../node_modules/bootstrap/scss/functions";
+
+// CUSTOM VARIABLES
+// Override Bootstrap variables here before importing Bootstrap SCSS files
+
+$primary: #1A1A1A; // DesignSpace Grey (Coco’s Black): https://colorkit.co/color/1A1A1A/
+$secondary: #FF5555; // Grapefruit: https://colorkit.co/color/ff5555/
+$success: #34C276; // Turtle Warrior green: https://colorkit.co/color/34c276/
+$dark: #343A40; // Artist’s Charcoal: https://colorkit.co/color/343a40/
+// Light theme only — disable dark mode CSS generation
+$enable-dark-mode: false;
+
+// Use the self-hosted Inter Variable font (declared via @font-face below) as the base font
+$font-family-sans-serif: 'Inter Variable', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+// Inter Variable — self-hosted
+// Files copied from node_modules/@fontsource-variable/inter/files/
+// Path is relative to the compiled CSS at public/assets/css/vendor/bootstrap.css
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('fonts/inter-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('fonts/inter-latin-wght-italic.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+// Bootstrap required
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/variables-dark";
+@import "../../../node_modules/bootstrap/scss/maps";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/utilities";
+
+// Full Bootstrap
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+
+.img-16 { max-width: 16px; height: auto; }
+.img-24 { max-width: 24px; height: auto; }
+.img-32 { max-width: 32px; height: auto; }
+.img-48 { max-width: 48px; height: auto; }
+.img-64 { max-width: 64px; height: auto; }
+.img-96 { max-width: 96px; height: auto; }
+.img-128 { max-width: 128px; height: auto; }
+.img-152 { max-width: 152px; height: auto; }
+.img-192 { max-width: 192px; height: auto; }
+.img-256 { max-width: 256px; height: auto; }
+.img-512 { max-width: 512px; height: auto; }
+
+blockquote {
+  padding: .5rem 1rem;
+  border-left: .25rem solid $border-color;
+  color: $gray-600;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+// Import custom styles for templates
+@import "templates";
+
+// Fix rubberband effect showing white background
+html {
+  background-color: $primary;
+}
