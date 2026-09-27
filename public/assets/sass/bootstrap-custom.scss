@@ -1,22 +1,339 @@
 // Bootstrap functions (needed for some variables/maps)
 @import "../../../node_modules/bootstrap/scss/functions";
 
+// FLUENT 2 DESIGN TOKENS
+// Light theme values from the Fluent 2 design system (https://fluent2.microsoft.design)
+
+// Brand
+$fluent-brand: #0F6CBD;
+$fluent-brand-hover: #115EA3;
+$fluent-brand-pressed: #0F548C;
+$fluent-brand-selected: #0C3B5E;
+$fluent-brand-tint: #EBF3FC;
+
+// Neutral foregrounds
+$fluent-fg-1: #242424;
+$fluent-fg-2: #424242;
+$fluent-fg-3: #616161;
+$fluent-fg-4: #707070;
+$fluent-fg-disabled: #BDBDBD;
+
+// Neutral backgrounds
+$fluent-bg-1: #FFFFFF;
+$fluent-bg-2: #FAFAFA;
+$fluent-bg-3: #F5F5F5;
+$fluent-bg-4: #F0F0F0;
+$fluent-bg-5: #EBEBEB;
+$fluent-bg-6: #E0E0E0;
+
+// Strokes
+$fluent-stroke-1: #D1D1D1;
+$fluent-stroke-1-hover: #C7C7C7;
+$fluent-stroke-2: #E0E0E0;
+$fluent-stroke-accessible: #616161;
+$fluent-stroke-focus: #000000;
+
+// Elevation (ambient + key shadow pairs)
+$fluent-shadow-2: 0 0 2px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .14);
+$fluent-shadow-4: 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .14);
+$fluent-shadow-8: 0 0 2px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .14);
+$fluent-shadow-16: 0 0 2px rgba(0, 0, 0, .12), 0 8px 16px rgba(0, 0, 0, .14);
+$fluent-shadow-28: 0 0 8px rgba(0, 0, 0, .12), 0 14px 28px rgba(0, 0, 0, .14);
+$fluent-shadow-64: 0 0 8px rgba(0, 0, 0, .12), 0 32px 64px rgba(0, 0, 0, .14);
+$fluent-shadows: (
+  "2": $fluent-shadow-2,
+  "4": $fluent-shadow-4,
+  "8": $fluent-shadow-8,
+  "16": $fluent-shadow-16,
+  "28": $fluent-shadow-28,
+  "64": $fluent-shadow-64,
+);
+
+// Motion
+$fluent-curve-easy-ease: cubic-bezier(.33, 0, .67, 1);
+$fluent-duration-fast: .15s;
+$fluent-duration-normal: .2s;
+
 // CUSTOM VARIABLES
 // Override Bootstrap variables here before importing Bootstrap SCSS files
 
-$primary: #1A1A1A; // DesignSpace Grey (Coco’s Black): https://colorkit.co/color/1A1A1A/
-$secondary: #FF5555; // Grapefruit: https://colorkit.co/color/ff5555/
-$success: #34C276; // Turtle Warrior green: https://colorkit.co/color/34c276/
-$dark: #343A40; // Artist’s Charcoal: https://colorkit.co/color/343a40/
-// Light theme only — disable dark mode CSS generation
+// Light theme only, disable dark mode CSS generation
 $enable-dark-mode: false;
+$enable-shadows: false;
 
+// Theme colours
+$primary: $fluent-brand;
+$secondary: $fluent-fg-3;
+$success: #107C10;
+$info: #038387;
+$warning: #F7630C;
+$danger: #C50F1F;
+$light: $fluent-bg-3;
+$dark: $fluent-fg-1;
+
+// Neutral ramp
+$white: #FFFFFF;
+$gray-100: $fluent-bg-2;
+$gray-200: $fluent-bg-3;
+$gray-300: $fluent-stroke-2;
+$gray-400: $fluent-stroke-1;
+$gray-500: $fluent-fg-disabled;
+$gray-600: $fluent-fg-4;
+$gray-700: $fluent-fg-3;
+$gray-800: $fluent-fg-2;
+$gray-900: $fluent-fg-1;
+$black: #000000;
+
+$color-contrast-dark: $fluent-fg-1;
+
+// Body
+$body-bg: $fluent-bg-1;
+$body-color: $fluent-fg-1;
+$body-secondary-color: $fluent-fg-3;
+$body-secondary-bg: $fluent-bg-3;
+$body-tertiary-color: $fluent-fg-4;
+$body-tertiary-bg: $fluent-bg-2;
+$border-color: $fluent-stroke-2;
+
+// Links
+$link-color: $fluent-brand;
+$link-hover-color: $fluent-brand-hover;
+$link-decoration: none;
+$link-hover-decoration: underline;
+
+// Typography
 // Use the self-hosted Inter Variable font (declared via @font-face below) as the base font
-$font-family-sans-serif: 'Inter Variable', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-sans-serif: 'Inter Variable', "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.5;
+$font-weight-semibold: 600;
+$font-weight-bold: 600;
 
-// Inter Variable — self-hosted
+$headings-font-weight: 600;
+$headings-line-height: 1.25;
+$h1-font-size: 2.5rem; // Large Title 40
+$h2-font-size: 2rem; // Title 1 32
+$h3-font-size: 1.75rem; // Title 2 28
+$h4-font-size: 1.5rem; // Title 3 24
+$h5-font-size: 1.25rem; // Subtitle 1 20
+$h6-font-size: 1rem; // Subtitle 2 16
+
+$display-font-sizes: (
+  1: 4.25rem, // Display 68
+  2: 3.75rem,
+  3: 3.25rem,
+  4: 2.875rem,
+  5: 2.5rem,
+  6: 2.25rem,
+);
+$display-font-weight: 600;
+$display-line-height: 1.15;
+$lead-font-weight: 400;
+
+// Radius
+$border-radius: .25rem; // Medium 4
+$border-radius-sm: .125rem; // Small 2
+$border-radius-lg: .375rem; // Large 6
+$border-radius-xl: .5rem; // X-Large 8
+$border-radius-xxl: .75rem;
+$border-radius-pill: 50rem;
+
+// Shadows
+$box-shadow-sm: $fluent-shadow-2;
+$box-shadow: $fluent-shadow-8;
+$box-shadow-lg: $fluent-shadow-28;
+$box-shadow-inset: none;
+
+// Focus
+$focus-ring-width: 2px;
+$focus-ring-opacity: 1;
+$focus-ring-color: $fluent-stroke-focus;
+
+// Transitions
+$transition-base: all $fluent-duration-fast $fluent-curve-easy-ease;
+$transition-fade: opacity $fluent-duration-fast $fluent-curve-easy-ease;
+
+// Buttons and inputs (Fluent medium controls: 32px high, 14px text)
+$input-btn-padding-y: .3125rem;
+$input-btn-padding-x: .75rem;
+$input-btn-font-size: .875rem;
+$input-btn-line-height: 1.4286;
+$input-btn-padding-y-sm: .1875rem;
+$input-btn-padding-x-sm: .5rem;
+$input-btn-font-size-sm: .75rem;
+$input-btn-padding-y-lg: .4375rem;
+$input-btn-padding-x-lg: 1rem;
+$input-btn-font-size-lg: 1rem;
+
+$btn-font-weight: 600;
+$btn-border-radius: $border-radius;
+$btn-border-radius-sm: $border-radius;
+$btn-border-radius-lg: $border-radius;
+$btn-transition: color $fluent-duration-fast $fluent-curve-easy-ease, background-color $fluent-duration-fast $fluent-curve-easy-ease, border-color $fluent-duration-fast $fluent-curve-easy-ease, box-shadow $fluent-duration-fast $fluent-curve-easy-ease;
+$btn-link-disabled-color: $fluent-fg-disabled;
+
+$input-padding-x: .625rem;
+$input-border-color: $fluent-stroke-1;
+$input-border-radius: $border-radius;
+$input-border-radius-sm: $border-radius;
+$input-border-radius-lg: $border-radius;
+$input-focus-border-color: $fluent-stroke-1;
+$input-focus-box-shadow: inset 0 -2px 0 $fluent-brand;
+$input-placeholder-color: $fluent-fg-4;
+$input-disabled-bg: $fluent-bg-2;
+$input-disabled-border-color: $fluent-stroke-2;
+$input-transition: border-color $fluent-duration-fast $fluent-curve-easy-ease, box-shadow $fluent-duration-fast $fluent-curve-easy-ease;
+$form-select-focus-box-shadow: $input-focus-box-shadow;
+$form-range-thumb-focus-box-shadow: 0 0 0 2px $fluent-bg-1, 0 0 0 4px $fluent-stroke-focus;
+
+$form-label-font-size: .875rem;
+$form-label-font-weight: 600;
+$form-text-color: $fluent-fg-3;
+$form-check-input-border: 1px solid $fluent-stroke-accessible;
+$form-check-input-border-radius: $border-radius-sm;
+$form-check-input-checked-bg-color: $fluent-brand;
+$form-check-input-checked-border-color: $fluent-brand;
+$form-check-input-focus-border: $fluent-stroke-accessible;
+$form-check-input-focus-box-shadow: none;
+$form-switch-color: $fluent-fg-3;
+$form-switch-focus-color: $fluent-fg-3;
+
+// Cards
+$card-border-color: $fluent-stroke-2;
+$card-border-radius: $border-radius-xl;
+$card-cap-bg: transparent;
+$card-spacer-y: 1rem;
+$card-spacer-x: 1.25rem;
+
+// Dropdowns (Fluent Menu)
+$dropdown-border-width: 0;
+$dropdown-border-radius: $border-radius;
+$dropdown-box-shadow: $fluent-shadow-16;
+$dropdown-padding-y: .25rem;
+$dropdown-font-size: .875rem;
+$dropdown-link-color: $fluent-fg-1;
+$dropdown-link-hover-color: $fluent-fg-1;
+$dropdown-link-hover-bg: $fluent-bg-3;
+$dropdown-link-active-color: $fluent-fg-1;
+$dropdown-link-active-bg: $fluent-bg-5;
+$dropdown-link-disabled-color: $fluent-fg-disabled;
+$dropdown-item-padding-y: .375rem;
+$dropdown-item-padding-x: .625rem;
+$dropdown-divider-bg: $fluent-stroke-2;
+$dropdown-header-color: $fluent-fg-3;
+
+// Modals (Fluent Dialog)
+$modal-content-border-width: 0;
+$modal-content-border-radius: $border-radius-xl;
+$modal-content-box-shadow-xs: $fluent-shadow-64;
+$modal-content-box-shadow-sm-up: $fluent-shadow-64;
+$modal-backdrop-opacity: .4;
+$modal-header-border-color: transparent;
+$modal-footer-border-color: transparent;
+$modal-title-line-height: 1.4;
+$modal-inner-padding: 1.5rem;
+$modal-header-padding: 1.5rem 1.5rem .5rem;
+
+// Tables
+$table-border-color: $fluent-stroke-2;
+$table-hover-bg: $fluent-bg-3;
+$table-striped-bg: $fluent-bg-2;
+$table-th-font-weight: 600;
+$table-cell-padding-y: .625rem;
+$table-cell-padding-x: .75rem;
+$table-group-separator-color: $fluent-stroke-1;
+
+// Alerts (Fluent MessageBar)
+$alert-border-radius: $border-radius;
+$alert-padding-y: .75rem;
+$alert-padding-x: 1rem;
+$alert-link-font-weight: 600;
+
+// Badges
+$badge-font-size: .75rem;
+$badge-font-weight: 600;
+$badge-border-radius: $border-radius-pill;
+$badge-padding-y: 0;
+$badge-padding-x: .375rem;
+
+// Navs (Fluent TabList)
+$nav-link-font-size: .875rem;
+$nav-link-color: $fluent-fg-2;
+$nav-link-hover-color: $fluent-fg-1;
+$nav-link-padding-y: .625rem;
+$nav-link-padding-x: .75rem;
+$nav-tabs-border-width: 0;
+$nav-tabs-border-radius: 0;
+$nav-tabs-link-active-color: $fluent-fg-1;
+$nav-tabs-link-active-bg: transparent;
+$nav-pills-border-radius: $border-radius;
+$nav-underline-border-width: 3px;
+$nav-underline-link-active-color: $fluent-fg-1;
+
+// Navbar
+$navbar-light-color: $fluent-fg-2;
+$navbar-light-hover-color: $fluent-fg-1;
+$navbar-light-active-color: $fluent-fg-1;
+$navbar-brand-font-size: 1.125rem;
+
+// Pagination
+$pagination-font-size: .875rem;
+$pagination-border-color: $fluent-stroke-1;
+$pagination-hover-bg: $fluent-bg-3;
+$pagination-hover-border-color: $fluent-stroke-1-hover;
+$pagination-disabled-color: $fluent-fg-disabled;
+$pagination-focus-box-shadow: none;
+
+// List groups
+$list-group-border-color: $fluent-stroke-2;
+$list-group-hover-bg: $fluent-bg-3;
+$list-group-active-color: $fluent-brand-selected;
+$list-group-active-bg: $fluent-brand-tint;
+$list-group-active-border-color: $fluent-stroke-2;
+$list-group-action-active-bg: $fluent-bg-5;
+
+// Accordion
+$accordion-border-color: $fluent-stroke-2;
+$accordion-button-active-bg: $fluent-bg-3;
+$accordion-button-active-color: $fluent-fg-1;
+$accordion-button-focus-box-shadow: none;
+$accordion-button-focus-border-color: $fluent-stroke-2;
+
+// Progress (Fluent ProgressBar)
+$progress-height: .5rem;
+$progress-bg: $fluent-bg-6;
+$progress-border-radius: $border-radius-pill;
+$progress-bar-bg: $fluent-brand;
+
+// Toasts
+$toast-border-color: $fluent-stroke-2;
+$toast-border-radius: $border-radius-xl;
+$toast-box-shadow: $fluent-shadow-8;
+$toast-header-background-color: $fluent-bg-1;
+$toast-header-border-color: $fluent-stroke-2;
+
+// Popovers
+$popover-border-color: $fluent-stroke-2;
+$popover-border-radius: $border-radius-xl;
+$popover-box-shadow: $fluent-shadow-16;
+$popover-header-bg: $fluent-bg-1;
+$popover-font-size: .875rem;
+
+// Tooltips
+$tooltip-bg: $fluent-fg-1;
+$tooltip-border-radius: $border-radius;
+$tooltip-font-size: .75rem;
+$tooltip-opacity: 1;
+$tooltip-padding-y: .3125rem;
+$tooltip-padding-x: .625rem;
+
+// Close button
+$btn-close-focus-shadow: none;
+$btn-close-opacity: .7;
+
+// Inter Variable, self-hosted
 // Files copied from node_modules/@fontsource-variable/inter/files/
-// Path is relative to the compiled CSS at public/assets/css/vendor/bootstrap.css
+// Path is relative to the compiled CSS at public/assets/css/vendor/bootstrap-custom.css
 @font-face {
   font-family: 'Inter Variable';
   font-style: normal;
@@ -45,6 +362,290 @@ $font-family-sans-serif: 'Inter Variable', system-ui, -apple-system, "Segoe UI",
 // Full Bootstrap
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 
+// FLUENT 2 GRADIENTS
+// Light gradients suit default text, dark gradients switch text to white.
+$fluent-gradients: (
+  "mist": (
+    base: $fluent-bg-1,
+    image: linear-gradient(180deg, $fluent-bg-1 0%, $fluent-brand-tint 100%),
+    dark: false,
+  ),
+  "bloom": (
+    base: $fluent-bg-2,
+    image: (
+      radial-gradient(at 12% 20%, #CFE4FA 0, rgba(#CFE4FA, 0) 55%),
+      radial-gradient(at 88% 12%, #E3DFFB 0, rgba(#E3DFFB, 0) 50%),
+      radial-gradient(at 70% 95%, #FDE7E0 0, rgba(#FDE7E0, 0) 55%),
+    ),
+    dark: false,
+  ),
+  "aurora": (
+    base: $fluent-bg-1,
+    image: (
+      radial-gradient(at 0% 100%, #D6F2F2 0, rgba(#D6F2F2, 0) 55%),
+      radial-gradient(at 50% 0%, #DCEBFB 0, rgba(#DCEBFB, 0) 60%),
+      radial-gradient(at 100% 80%, #E8E1FA 0, rgba(#E8E1FA, 0) 55%),
+    ),
+    dark: false,
+  ),
+  "sunrise": (
+    base: $fluent-bg-1,
+    image: (
+      radial-gradient(at 0% 0%, #FFE8D9 0, rgba(#FFE8D9, 0) 60%),
+      radial-gradient(at 60% 40%, #FBE2EC 0, rgba(#FBE2EC, 0) 55%),
+      radial-gradient(at 100% 100%, #E6E2FB 0, rgba(#E6E2FB, 0) 60%),
+    ),
+    dark: false,
+  ),
+  "brand": (
+    base: $fluent-brand,
+    image: linear-gradient(135deg, $fluent-brand 0%, $fluent-brand-hover 45%, $fluent-brand-selected 100%),
+    dark: true,
+  ),
+  "dusk": (
+    base: $fluent-brand-selected,
+    image: (
+      radial-gradient(at 15% 15%, #5B5FC7 0, rgba(#5B5FC7, 0) 55%),
+      radial-gradient(at 85% 85%, $fluent-brand 0, rgba($fluent-brand, 0) 60%),
+    ),
+    dark: true,
+  ),
+  "ocean": (
+    base: #038387,
+    image: linear-gradient(135deg, #038387 0%, $fluent-brand 100%),
+    dark: true,
+  ),
+);
+
+:root {
+  @each $name, $gradient in $fluent-gradients {
+    --fluent-gradient-#{$name}: #{map-get($gradient, image)};
+  }
+}
+
+@each $name, $gradient in $fluent-gradients {
+  .bg-fluent-#{$name} {
+    background-color: map-get($gradient, base);
+    background-image: var(--fluent-gradient-#{$name});
+
+    @if map-get($gradient, dark) {
+      --#{$prefix}body-color: #{$white};
+      --#{$prefix}secondary-color: #{rgba($white, .8)};
+      --#{$prefix}link-color-rgb: #{to-rgb($white)};
+      --#{$prefix}link-hover-color-rgb: #{to-rgb($white)};
+      color: $white;
+
+      a:not(.btn) {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Fluent Acrylic material, for surfaces over gradients or imagery
+.bg-fluent-acrylic {
+  background-color: rgba($white, .7);
+  border: 1px solid rgba($white, .6);
+  -webkit-backdrop-filter: blur(30px) saturate(125%);
+  backdrop-filter: blur(30px) saturate(125%);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .bg-fluent-acrylic {
+    background-color: rgba($white, .95);
+  }
+}
+
+// FLUENT 2 ELEVATION UTILITIES
+@each $name, $shadow in $fluent-shadows {
+  .shadow-fluent-#{$name} {
+    box-shadow: $shadow !important;
+  }
+}
+
+// FLUENT 2 COMPONENT BEHAVIOUR
+
+// Focus indicator: 2px black outline, keyboard only
+.btn:focus-visible,
+.btn-check:focus-visible + .btn,
+.btn-close:focus-visible,
+.nav-link:focus-visible,
+.navbar-brand:focus-visible,
+.page-link:focus-visible,
+.dropdown-item:focus-visible,
+.list-group-item-action:focus-visible,
+.accordion-button:focus-visible,
+.form-check-input:focus-visible,
+a:focus-visible {
+  outline: 2px solid $fluent-stroke-focus;
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.dropdown-item:focus-visible,
+.list-group-item-action:focus-visible,
+.accordion-button:focus-visible {
+  outline-offset: -2px;
+}
+
+// Buttons
+.btn-primary {
+  --#{$prefix}btn-hover-bg: #{$fluent-brand-hover};
+  --#{$prefix}btn-hover-border-color: #{$fluent-brand-hover};
+  --#{$prefix}btn-active-bg: #{$fluent-brand-pressed};
+  --#{$prefix}btn-active-border-color: #{$fluent-brand-pressed};
+  --#{$prefix}btn-disabled-bg: #{$fluent-bg-4};
+  --#{$prefix}btn-disabled-border-color: #{$fluent-stroke-2};
+  --#{$prefix}btn-disabled-color: #{$fluent-fg-disabled};
+}
+
+// Fluent default (secondary) button
+.btn-outline-secondary {
+  --#{$prefix}btn-color: #{$fluent-fg-1};
+  --#{$prefix}btn-bg: #{$fluent-bg-1};
+  --#{$prefix}btn-border-color: #{$fluent-stroke-1};
+  --#{$prefix}btn-hover-color: #{$fluent-fg-1};
+  --#{$prefix}btn-hover-bg: #{$fluent-bg-3};
+  --#{$prefix}btn-hover-border-color: #{$fluent-stroke-1-hover};
+  --#{$prefix}btn-active-color: #{$fluent-fg-1};
+  --#{$prefix}btn-active-bg: #{$fluent-bg-6};
+  --#{$prefix}btn-active-border-color: #{$fluent-stroke-1-hover};
+  --#{$prefix}btn-disabled-color: #{$fluent-fg-disabled};
+  --#{$prefix}btn-disabled-bg: #{$fluent-bg-4};
+  --#{$prefix}btn-disabled-border-color: #{$fluent-stroke-2};
+}
+
+.btn-link {
+  --#{$prefix}btn-font-weight: 400;
+}
+
+// Inputs: accessible bottom stroke, brand underline on focus
+.form-control,
+.form-select {
+  border-bottom-color: $fluent-stroke-accessible;
+
+  &:hover:not(:disabled):not(:focus) {
+    border-color: $fluent-stroke-1-hover;
+    border-bottom-color: $fluent-fg-2;
+  }
+
+  &:disabled {
+    border-bottom-color: $fluent-stroke-2;
+  }
+}
+
+.form-control-plaintext {
+  border-bottom-color: transparent;
+}
+
+.form-check-input:hover:not(:disabled):not(:checked) {
+  border-color: $fluent-fg-1;
+}
+
+// Badges (Fluent Badge, medium): fixed 20px height with centred label
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .25rem;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  line-height: 1;
+  vertical-align: middle;
+  border: 1px solid transparent;
+}
+
+.badge-lg {
+  --#{$prefix}badge-padding-x: .5rem;
+  --#{$prefix}badge-font-size: .875rem;
+  min-width: 1.5rem;
+  height: 1.5rem;
+}
+
+.badge.text-bg-light {
+  border-color: $fluent-stroke-1;
+}
+
+// Cards
+.card {
+  box-shadow: $fluent-shadow-4;
+}
+
+.card-hover {
+  transition: box-shadow $fluent-duration-normal $fluent-curve-easy-ease;
+
+  &:hover {
+    box-shadow: $fluent-shadow-8;
+  }
+}
+
+// Overlay surfaces
+.dropdown-menu {
+  padding: .25rem;
+  box-shadow: $fluent-shadow-16;
+}
+
+.dropdown-item {
+  border-radius: $border-radius;
+}
+
+.modal-content {
+  box-shadow: $fluent-shadow-64;
+}
+
+.popover {
+  box-shadow: $fluent-shadow-16;
+}
+
+// Tabs (Fluent TabList): rounded 3px indicator under the selected tab
+.nav-tabs {
+  gap: .25rem;
+
+  .nav-link {
+    position: relative;
+    background: transparent;
+    border: 0;
+
+    &::after {
+      position: absolute;
+      right: $nav-link-padding-x;
+      bottom: 0;
+      left: $nav-link-padding-x;
+      height: 3px;
+      content: "";
+      background-color: transparent;
+      border-radius: $border-radius-pill;
+      transition: background-color $fluent-duration-fast $fluent-curve-easy-ease;
+    }
+
+    &:hover::after {
+      background-color: $fluent-stroke-1;
+    }
+
+    &.active {
+      font-weight: 600;
+
+      &::after {
+        background-color: $fluent-brand;
+      }
+    }
+  }
+}
+
+.nav-underline {
+  --#{$prefix}nav-underline-link-active-color: #{$fluent-fg-1};
+
+  .nav-link.active {
+    border-bottom-color: $fluent-brand;
+  }
+}
+
+// Text selection
+::selection {
+  background-color: #B4D6FA;
+}
+
+// MISC
 
 .img-16 { max-width: 16px; height: auto; }
 .img-24 { max-width: 24px; height: auto; }
@@ -60,8 +661,8 @@ $font-family-sans-serif: 'Inter Variable', system-ui, -apple-system, "Segoe UI",
 
 blockquote {
   padding: .5rem 1rem;
-  border-left: .25rem solid $border-color;
-  color: $gray-600;
+  border-left: 3px solid $primary;
+  color: $fluent-fg-2;
 }
 
 blockquote > :last-child {
@@ -71,7 +672,7 @@ blockquote > :last-child {
 // Import custom styles for templates
 @import "templates";
 
-// Fix rubberband effect showing white background
+// Match the rubberband overscroll area to the light page background
 html {
-  background-color: $primary;
+  background-color: $body-bg;
 }
