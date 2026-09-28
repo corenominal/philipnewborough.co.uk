@@ -75,7 +75,7 @@ $sections = [
     </div>
 </nav>
 
-<header class="bg-fluent-bloom border-bottom">
+<header class="bg-fluent-dusk border-bottom">
     <div class="container-xl py-5">
         <p class="text-body-secondary fw-semibold mb-2">Fluent 2 for Bootstrap 5.3</p>
         <h1 class="display-4 mb-3">Theme demo</h1>
